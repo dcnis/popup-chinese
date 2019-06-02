@@ -18,33 +18,32 @@
             </v-list-tile>
           </template>
 
-          <v-list-tile to="/absolute-beginners">
+          <v-list-tile to="/lessons-absolute-beginners">
             <v-list-tile-action></v-list-tile-action>
-              <v-list-tile-title>Absolute Beginners</v-list-tile-title>
+            <v-list-tile-title>Absolute Beginners</v-list-tile-title>
             <v-icon>child_care</v-icon>
-
           </v-list-tile>
 
-          <v-list-tile to="/elementary">
+          <v-list-tile to="/lessons-elementary">
             <v-list-tile-action></v-list-tile-action>
-            <v-list-tile-content>
               <v-list-tile-title>Elementary</v-list-tile-title>
-            </v-list-tile-content>
-                        <v-icon>spa</v-icon>
+            <v-icon>spa</v-icon>
           </v-list-tile>
-          <v-list-tile to="/intermediate">
-          <v-list-tile-action></v-list-tile-action>
+
+          <v-list-tile to="/lessons-intermediate">
+            <v-list-tile-action></v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>Intermediate</v-list-tile-title>
             </v-list-tile-content>
-                        <v-icon>star</v-icon>
+            <v-icon>star</v-icon>
           </v-list-tile>
-          <v-list-tile to="/advanced">
+
+          <v-list-tile to="/lessons-advanced">
             <v-list-tile-action></v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>Advanced</v-list-tile-title>
             </v-list-tile-content>
-                        <v-icon>school</v-icon>
+            <v-icon>school</v-icon>
           </v-list-tile>
         </v-list-group>
 
@@ -73,10 +72,9 @@
   </v-app>
 </template>
 
-
 <script>
 export default {
-  name: "App",
+  name: 'App',
   props: {
     source: String
   },
