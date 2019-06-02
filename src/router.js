@@ -8,6 +8,9 @@ import Elementary from './views/Elementary.vue';
 import Intermediate from './views/Intermediate';
 import Advanced from './views/Advanced';
 import LessonDetails from './components/LessonDetails.vue';
+import Discussion from './components/Discussion.vue';
+import Transcript from './components/Transcript.vue';
+import Vocabulary from './components/Vocabulary.vue';
 
 Vue.use(Router);
 
@@ -22,6 +25,11 @@ export default new Router({
     { path: '/lessons-elementary', component: Elementary },
     { path: '/lessons-intermediate', component: Intermediate },
     { path: '/lessons-advanced', component: Advanced },
-    { path: '/lesson/:id', component: LessonDetails }
+    { path: '/lesson/:id', component: LessonDetails,
+            children: [
+              { path: 'discussion', component: Discussion },
+              { path: 'transcript', component: Transcript },
+              { path: 'vocabulary', component: Vocabulary },
+            ]},
   ]
 });

@@ -26,7 +26,7 @@
 
           <v-list-tile to="/lessons-elementary">
             <v-list-tile-action></v-list-tile-action>
-              <v-list-tile-title>Elementary</v-list-tile-title>
+            <v-list-tile-title>Elementary</v-list-tile-title>
             <v-icon>spa</v-icon>
           </v-list-tile>
 
