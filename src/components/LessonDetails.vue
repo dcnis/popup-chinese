@@ -39,6 +39,9 @@ export default {
     audioFinish() {
       console.log("You see this means audio finish.");
     }
+  },
+  created(){
+      //Update the timeStamp, in order to always sort the lesson list to the most recently opened lesson
   }
 };
 </script>
