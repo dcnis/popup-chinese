@@ -1,39 +1,26 @@
-# popup-chinese
+# podcast chinese
 
-## Project setup
-```
-npm install
-```
+A Vue.js Application for learning the Chinese Language
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+# Introduction
 
-### Compiles and minifies for production
-```
-npm run build
-```
+I am a great fan of popupchinese.com, an online website with tons of podcasts to improve your chinese listening skill.
+Unfortunately their website isn't responsive, so I have build this mobile application. 
 
-### Run your tests
-```
-npm run test
-```
+# Installation
 
-### Lints and fixes files
-```
-npm run lint
-```
+To run the application on your machine:
 
-### Run your end-to-end tests
-```
-npm run test:e2e
-```
+1. Make sure you have latest [Node.js](https://nodejs.org/en/) installed.
 
-### Run your unit tests
-```
-npm run test:unit
-```
+2. Download repository and run
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+    ```bash
+    npm install
+    ```
+
+3. Run application.
+
+    ```bash
+    npm run serve
+    ```
