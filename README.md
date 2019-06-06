@@ -1,4 +1,4 @@
-# podcast chinese
+# Popup Chinese Mobile Application
 
 A Vue.js Application for learning the Chinese Language
 
