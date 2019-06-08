@@ -4,6 +4,7 @@
     <vuetify-audio :file="file" :ended="audioFinish"></vuetify-audio>
     {{ this.$route.params.id }}
     <router-view></router-view>
+    <br><br>
     <v-bottom-nav fixed :value="e31" absolute color="transparent">
         <v-btn flat color="teal" to="discussion">
           <span>Discussion</span>

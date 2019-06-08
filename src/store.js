@@ -13,6 +13,36 @@ export default new Vuex.Store({
         level: 'Intermediate',
         lastTimeWatched: '2019-06-02T10:00:00Z',
         discussion: 'Iron Chicken knows which way the winds are blowing. It knows how much that shirt sells for at the Chegongzhuang Discount Market, and it isnt afraid of telling you straight out. So dont try to pull one over the Iron Chicken. It will not pity you. It will stick fast to its ideals of fairness, justice and affordable cotton casual-wear. And if you still insist on your ridiculous markup, it will walk away. Because the Iron Chicken does not need you. It does not need anyone. Learning Chinese? While there is less fowl here than our title might suggest, we had fun recording this show and would like to reiterate that the entire dialogue is Echos idea. So please do not use our general email address for your complaints. Rather, please direct your hate mail straight to the source by writing echo@popupchinese.com. In fact, feel free to write multiple times under different pseudonyms. And dont forget to compliment the rest of our Popup Staff while youre at it.',
+        transcript: [
+          {
+            line: 1,
+            speaker: '安吉',
+            chinese: '你好!',
+            pinyin: 'Nǐ hǎo',
+            english: 'Hello!'
+          },
+          {
+            line: 2,
+            speaker: 'Shuo sun',
+            chinese: '这是谁?',
+            pinyin: 'Zhè shì shéi',
+            english: 'Who is it?'
+          },
+          {
+            line: 3,
+            speaker: '安吉',
+            chinese: '你的姥姥来了',
+            pinyin: 'Nǐ de lǎolao láile',
+            english: 'Your grandmom is it'
+          },
+          {
+            line: 4,
+            speaker: 'Shuo sun',
+            chinese: '他妈的!',
+            pinyin: 'Tā mā de',
+            english: 'Damn!'
+          }
+        ]
       },
       {
         id: 2,
@@ -21,6 +51,36 @@ export default new Vuex.Store({
         level: 'Absolute Beginners',
         lastTimeWatched: '2019-06-02T12:00:00Z',
         discussion: 'Iron Chicken knows which way the winds are blowing. It knows how much that shirt sells for at the Chegongzhuang Discount Market, and it isnt afraid of telling you straight out. So dont try to pull one over the Iron Chicken. It will not pity you. It will stick fast to its ideals of fairness, justice and affordable cotton casual-wear. And if you still insist on your ridiculous markup, it will walk away. Because the Iron Chicken does not need you. It does not need anyone. Learning Chinese? While there is less fowl here than our title might suggest, we had fun recording this show and would like to reiterate that the entire dialogue is Echos idea. So please do not use our general email address for your complaints. Rather, please direct your hate mail straight to the source by writing echo@popupchinese.com. In fact, feel free to write multiple times under different pseudonyms. And dont forget to compliment the rest of our Popup Staff while youre at it.',
+        transcript: [
+          {
+            line: 1,
+            speaker: '安吉',
+            chinese: '你好!',
+            pinyin: 'Nǐ hǎo',
+            english: 'Hello!'
+          },
+          {
+            line: 2,
+            speaker: 'Shuo sun',
+            chinese: '这是谁?',
+            pinyin: 'Zhè shì shéi',
+            english: 'Who is it?'
+          },
+          {
+            line: 3,
+            speaker: '安吉',
+            chinese: '你的姥姥来了',
+            pinyin: 'Nǐ de lǎolao láile',
+            english: 'Your grandmom is it'
+          },
+          {
+            line: 4,
+            speaker: 'Shuo sun',
+            chinese: '他妈的!',
+            pinyin: 'Tā mā de',
+            english: 'Damn!'
+          }
+        ]
       },
       {
         id: 3,
@@ -29,6 +89,36 @@ export default new Vuex.Store({
         level: 'Elementary',
         lastTimeWatched: "2019-06-02T11:00:00Z",
         discussion: 'Iron Chicken knows which way the winds are blowing. It knows how much that shirt sells for at the Chegongzhuang Discount Market, and it isnt afraid of telling you straight out. So dont try to pull one over the Iron Chicken. It will not pity you. It will stick fast to its ideals of fairness, justice and affordable cotton casual-wear. And if you still insist on your ridiculous markup, it will walk away. Because the Iron Chicken does not need you. It does not need anyone. Learning Chinese? While there is less fowl here than our title might suggest, we had fun recording this show and would like to reiterate that the entire dialogue is Echos idea. So please do not use our general email address for your complaints. Rather, please direct your hate mail straight to the source by writing echo@popupchinese.com. In fact, feel free to write multiple times under different pseudonyms. And dont forget to compliment the rest of our Popup Staff while youre at it.',
+        transcript: [
+          {
+            line: 1,
+            speaker: '安吉',
+            chinese: '你好!',
+            pinyin: 'Nǐ hǎo',
+            english: 'Hello!'
+          },
+          {
+            line: 2,
+            speaker: 'Shuo sun',
+            chinese: '这是谁?',
+            pinyin: 'Zhè shì shéi',
+            english: 'Who is it?'
+          },
+          {
+            line: 3,
+            speaker: '安吉',
+            chinese: '你的姥姥来了',
+            pinyin: 'Nǐ de lǎolao láile',
+            english: 'Your grandmom is it'
+          },
+          {
+            line: 4,
+            speaker: 'Shuo sun',
+            chinese: '他妈的!',
+            pinyin: 'Tā mā de',
+            english: 'Damn!'
+          }
+        ]
       },
       {
           id: 4,
@@ -37,6 +127,36 @@ export default new Vuex.Store({
         level: "Elementary",
         lastTimeWatched: "2019-06-02T11:00:00Z",
         discussion: 'Iron Chicken knows which way the winds are blowing. It knows how much that shirt sells for at the Chegongzhuang Discount Market, and it isnt afraid of telling you straight out. So dont try to pull one over the Iron Chicken. It will not pity you. It will stick fast to its ideals of fairness, justice and affordable cotton casual-wear. And if you still insist on your ridiculous markup, it will walk away. Because the Iron Chicken does not need you. It does not need anyone. Learning Chinese? While there is less fowl here than our title might suggest, we had fun recording this show and would like to reiterate that the entire dialogue is Echos idea. So please do not use our general email address for your complaints. Rather, please direct your hate mail straight to the source by writing echo@popupchinese.com. In fact, feel free to write multiple times under different pseudonyms. And dont forget to compliment the rest of our Popup Staff while youre at it.',
+        transcript: [
+          {
+            line: 1,
+            speaker: '安吉',
+            chinese: '你好!',
+            pinyin: 'Nǐ hǎo',
+            english: 'Hello!'
+          },
+          {
+            line: 2,
+            speaker: 'Shuo sun',
+            chinese: '这是谁?',
+            pinyin: 'Zhè shì shéi',
+            english: 'Who is it?'
+          },
+          {
+            line: 3,
+            speaker: '安吉',
+            chinese: '你的姥姥来了',
+            pinyin: 'Nǐ de lǎolao láile',
+            english: 'Your grandmom is it'
+          },
+          {
+            line: 4,
+            speaker: 'Shuo sun',
+            chinese: '他妈的!',
+            pinyin: 'Tā mā de',
+            english: 'Damn!'
+          }
+        ]
       },
       {
         id: 5,
@@ -45,6 +165,36 @@ export default new Vuex.Store({
         level: "Absolute Beginners",
         lastTimeWatched: "2019-06-02T11:00:00Z",
         discussion: 'Iron Chicken knows which way the winds are blowing. It knows how much that shirt sells for at the Chegongzhuang Discount Market, and it isnt afraid of telling you straight out. So dont try to pull one over the Iron Chicken. It will not pity you. It will stick fast to its ideals of fairness, justice and affordable cotton casual-wear. And if you still insist on your ridiculous markup, it will walk away. Because the Iron Chicken does not need you. It does not need anyone. Learning Chinese? While there is less fowl here than our title might suggest, we had fun recording this show and would like to reiterate that the entire dialogue is Echos idea. So please do not use our general email address for your complaints. Rather, please direct your hate mail straight to the source by writing echo@popupchinese.com. In fact, feel free to write multiple times under different pseudonyms. And dont forget to compliment the rest of our Popup Staff while youre at it.',
+        transcript: [
+          {
+            line: 1,
+            speaker: '安吉',
+            chinese: '你好!',
+            pinyin: 'Nǐ hǎo',
+            english: 'Hello!'
+          },
+          {
+            line: 2,
+            speaker: 'Shuo sun',
+            chinese: '这是谁?',
+            pinyin: 'Zhè shì shéi',
+            english: 'Who is it?'
+          },
+          {
+            line: 3,
+            speaker: '安吉',
+            chinese: '你的姥姥来了',
+            pinyin: 'Nǐ de lǎolao láile',
+            english: 'Your grandmom is it'
+          },
+          {
+            line: 4,
+            speaker: 'Shuo sun',
+            chinese: '他妈的!',
+            pinyin: 'Tā mā de',
+            english: 'Damn!'
+          }
+        ]
       },
       {
         id: 6,
@@ -53,6 +203,36 @@ export default new Vuex.Store({
         level: "Absolute Beginners",
         lastTimeWatched: "2019-06-02T11:00:00Z",
         discussion: 'Iron Chicken knows which way the winds are blowing. It knows how much that shirt sells for at the Chegongzhuang Discount Market, and it isnt afraid of telling you straight out. So dont try to pull one over the Iron Chicken. It will not pity you. It will stick fast to its ideals of fairness, justice and affordable cotton casual-wear. And if you still insist on your ridiculous markup, it will walk away. Because the Iron Chicken does not need you. It does not need anyone. Learning Chinese? While there is less fowl here than our title might suggest, we had fun recording this show and would like to reiterate that the entire dialogue is Echos idea. So please do not use our general email address for your complaints. Rather, please direct your hate mail straight to the source by writing echo@popupchinese.com. In fact, feel free to write multiple times under different pseudonyms. And dont forget to compliment the rest of our Popup Staff while youre at it.',
+        transcript: [
+          {
+            line: 1,
+            speaker: '安吉',
+            chinese: '你好!',
+            pinyin: 'Nǐ hǎo',
+            english: 'Hello!'
+          },
+          {
+            line: 2,
+            speaker: 'Shuo sun',
+            chinese: '这是谁?',
+            pinyin: 'Zhè shì shéi',
+            english: 'Who is it?'
+          },
+          {
+            line: 3,
+            speaker: '安吉',
+            chinese: '你的姥姥来了',
+            pinyin: 'Nǐ de lǎolao láile',
+            english: 'Your grandmom is it'
+          },
+          {
+            line: 4,
+            speaker: 'Shuo sun',
+            chinese: '他妈的!',
+            pinyin: 'Tā mā de',
+            english: 'Damn!'
+          }
+        ]
       },
       {
         id: 7,
@@ -61,6 +241,36 @@ export default new Vuex.Store({
         level: "Advanced",
         lastTimeWatched: "2019-06-02T11:00:00Z",
         discussion: 'Iron Chicken knows which way the winds are blowing. It knows how much that shirt sells for at the Chegongzhuang Discount Market, and it isnt afraid of telling you straight out. So dont try to pull one over the Iron Chicken. It will not pity you. It will stick fast to its ideals of fairness, justice and affordable cotton casual-wear. And if you still insist on your ridiculous markup, it will walk away. Because the Iron Chicken does not need you. It does not need anyone. Learning Chinese? While there is less fowl here than our title might suggest, we had fun recording this show and would like to reiterate that the entire dialogue is Echos idea. So please do not use our general email address for your complaints. Rather, please direct your hate mail straight to the source by writing echo@popupchinese.com. In fact, feel free to write multiple times under different pseudonyms. And dont forget to compliment the rest of our Popup Staff while youre at it.',
+        transcript: [
+          {
+            line: 1,
+            speaker: '安吉',
+            chinese: '你好!',
+            pinyin: 'Nǐ hǎo',
+            english: 'Hello!'
+          },
+          {
+            line: 2,
+            speaker: 'Shuo sun',
+            chinese: '这是谁?',
+            pinyin: 'Zhè shì shéi',
+            english: 'Who is it?'
+          },
+          {
+            line: 3,
+            speaker: '安吉',
+            chinese: '你的姥姥来了',
+            pinyin: 'Nǐ de lǎolao láile',
+            english: 'Your grandmom is it'
+          },
+          {
+            line: 4,
+            speaker: 'Shuo sun',
+            chinese: '他妈的!',
+            pinyin: 'Tā mā de',
+            english: 'Damn!'
+          }
+        ]
       },
       {
         id: 8,
@@ -69,6 +279,36 @@ export default new Vuex.Store({
         level: "Advanced",
         lastTimeWatched: "2019-06-02T11:00:00Z",
         discussion: 'Iron Chicken knows which way the winds are blowing. It knows how much that shirt sells for at the Chegongzhuang Discount Market, and it isnt afraid of telling you straight out. So dont try to pull one over the Iron Chicken. It will not pity you. It will stick fast to its ideals of fairness, justice and affordable cotton casual-wear. And if you still insist on your ridiculous markup, it will walk away. Because the Iron Chicken does not need you. It does not need anyone. Learning Chinese? While there is less fowl here than our title might suggest, we had fun recording this show and would like to reiterate that the entire dialogue is Echos idea. So please do not use our general email address for your complaints. Rather, please direct your hate mail straight to the source by writing echo@popupchinese.com. In fact, feel free to write multiple times under different pseudonyms. And dont forget to compliment the rest of our Popup Staff while youre at it.',
+        transcript: [
+          {
+            line: 1,
+            speaker: '安吉',
+            chinese: '你好!',
+            pinyin: 'Nǐ hǎo',
+            english: 'Hello!'
+          },
+          {
+            line: 2,
+            speaker: 'Shuo sun',
+            chinese: '这是谁?',
+            pinyin: 'Zhè shì shéi',
+            english: 'Who is it?'
+          },
+          {
+            line: 3,
+            speaker: '安吉',
+            chinese: '你的姥姥来了',
+            pinyin: 'Nǐ de lǎolao láile',
+            english: 'Your grandmom is it'
+          },
+          {
+            line: 4,
+            speaker: 'Shuo sun',
+            chinese: '他妈的!',
+            pinyin: 'Tā mā de',
+            english: 'Damn!'
+          }
+        ]
       }
     ]
   },
