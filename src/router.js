@@ -27,9 +27,10 @@ export default new Router({
     { path: '/lessons-advanced', component: Advanced },
     { path: '/lesson/:id', component: LessonDetails,
             children: [
-              { path: 'discussion', component: Discussion },
+              { path: '', redirect: 'discussion' },
+              { path: 'discussion', name:'discussionName', component: Discussion },
               { path: 'transcript', component: Transcript },
               { path: 'vocabulary', component: Vocabulary },
-            ]},
+            ] }
   ]
 });

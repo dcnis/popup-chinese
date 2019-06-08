@@ -25,21 +25,19 @@ export default {
   computed: {
     lessonsFilteredAndSorted() {
       return this.$store.state.lessons
-            .filter(item => item.level == this.level)
-            .sort(function(a,b){
-              return new Date(b.lastTimeWatched) - new Date(a.lastTimeWatched)
-          });
+        .filter(item => item.level == this.level)
+        .sort(function(a, b) {
+          return new Date(b.lastTimeWatched) - new Date(a.lastTimeWatched);
+        });
     }
   },
   data() {
-    return {
-      
-    };
+    return {};
   },
   methods: {
     openLesson() {
-      console.log("Lesson opened");
+          console.log('Lesson opened');
     }
   }
-};
+} ;
 </script>
