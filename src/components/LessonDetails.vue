@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>LessonDetails</p>
+    <h1><span style="color:#9C1010">{{currentLesson.level}}</span> - {{currentLesson.title}}</h1>
     <vuetify-audio :file="file" :ended="audioFinish"></vuetify-audio>
     {{ this.$route.params.id }}
     <router-view></router-view>
@@ -42,6 +42,11 @@ export default {
   },
   created (){
       //Update the timeStamp, in order to always sort the lesson list to the most recently opened lesson
+  },
+  computed: {
+    currentLesson(){
+     return this.$store.state.lessons.find(item => item.id == this.$route.params.id);
+    }
   }
 };
 </script>
