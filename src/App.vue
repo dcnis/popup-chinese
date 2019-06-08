@@ -57,7 +57,7 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar color="light-blue" dark fixed app>
+    <v-toolbar color="teal" dark fixed app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title>POPUP CHINESE</v-toolbar-title>
     </v-toolbar>
@@ -66,7 +66,7 @@
         <router-view></router-view>
       </v-container>
     </v-content>
-    <v-footer color="cyan darken-4" app>
+    <v-footer color="teal darken-4" app>
       <span class="white--text">Copyright Dennis Schmidt 2019</span>
     </v-footer>
   </v-app>

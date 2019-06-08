@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1><span style="color:#9C1010">{{currentLesson.level}}</span> - {{currentLesson.title}}</h1>
+    <h1><span class="level">{{currentLesson.level}}</span> - {{currentLesson.title}}</h1>
     <vuetify-audio :file="file" :ended="audioFinish"></vuetify-audio>
     {{ this.$route.params.id }}
     <router-view></router-view>
@@ -50,3 +50,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.level {
+  color: #00695C;
+}
+</style>
