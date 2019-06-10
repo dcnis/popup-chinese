@@ -19,7 +19,7 @@ export default new Vuex.Store({
             speaker: '安吉',
             chinese: '你好!',
             pinyin: 'Nǐ hǎo',
-            english: 'Hello!'
+            english: 'Hello!',
           },
           {
             line: 2,
@@ -41,6 +41,106 @@ export default new Vuex.Store({
             chinese: '他妈的!',
             pinyin: 'Tā mā de',
             english: 'Damn!'
+          }
+        ],
+        vocabulary: [
+          {
+            id: 1,
+            chinese: '泰坦尼克号',
+            pinyin: 'Tàitǎnníkè hào',
+            english: 'Titanic',
+            type: 'noun'
+          },
+          {
+            id: 2,
+            chinese: '咱们',
+            pinyin: 'zánmen',
+            english: 'we',
+            type: 'pronoun'
+          },
+          {
+            id: 3,
+            chinese: '海水',
+            pinyin: 'hǎishuǐ',
+            english: 'seawater',
+            type: 'noun'
+          },
+          {
+            id: 4,
+            chinese: '冰川',
+            pinyin: 'bīngchuān',
+            english: 'glacier (colloquially iceberg as well)',
+            type: 'noun'
+          },
+          {
+            id: 5,
+            chinese: '冰山',
+            pinyin: 'bīngshān',
+            english: 'iceberg',
+            type: 'noun'
+          },
+          {
+            id: 6,
+            chinese: '座',
+            pinyin: 'zuò',
+            english: 'large geographic objects',
+            type: 'measure word'
+          },
+          {
+            id: 7,
+            chinese: '逃生',
+            pinyin: 'táoshēng',
+            english: "to escape with one's life",
+            type: 'verb'
+          },
+          {
+            id: 8,
+            chinese: '头等舱',
+            pinyin: 'tóuděngcāng',
+            english: 'first class',
+            type: 'noun'
+          },
+          {
+            id: 9,
+            chinese: '救生艇',
+            pinyin: 'jiùshēngtǐng',
+            english: 'lifeboat',
+            type: 'noun'
+          },
+          {
+            id: 10,
+            chinese: '怪',
+            pinyin: 'guài',
+            english: 'to blame',
+            type: 'verb'
+          },
+          {
+            id: 11,
+            chinese: '三等舱',
+            pinyin: 'sānděngcāng',
+            english: 'third class cabin',
+            type: 'noun'
+          },
+          {
+            id: 12,
+            chinese: '抢',
+            pinyin: 'qiǎng',
+            english: 'to rob',
+            type: 'verb'
+          },
+          {
+            id: 13,
+            chinese: '渗水',
+            pinyin: 'shènshuǐ',
+            english: 'to sink under water',
+            type: 'verb'
+          },
+          {
+            id: 14,
+            chinese: '次',
+            pinyin: 'cì',
+            english: 'poor quality',
+            type: 'adjective'
           }
         ]
       },
@@ -80,6 +180,106 @@ export default new Vuex.Store({
             pinyin: 'Tā mā de',
             english: 'Damn!'
           }
+        ],
+        vocabulary: [
+          {
+            id: 1,
+            chinese: '泰坦尼克号',
+            pinyin: 'Tàitǎnníkè hào',
+            english: 'Titanic',
+            type: 'noun'
+          },
+          {
+            id: 2,
+            chinese: '咱们',
+            pinyin: 'zánmen',
+            english: 'we',
+            type: 'pronoun'
+          },
+          {
+            id: 3,
+            chinese: '海水',
+            pinyin: 'hǎishuǐ',
+            english: 'seawater',
+            type: 'noun'
+          },
+          {
+            id: 4,
+            chinese: '冰川',
+            pinyin: 'bīngchuān',
+            english: 'glacier (colloquially iceberg as well)',
+            type: 'noun'
+          },
+          {
+            id: 5,
+            chinese: '冰山',
+            pinyin: 'bīngshān',
+            english: 'iceberg',
+            type: 'noun'
+          },
+          {
+            id: 6,
+            chinese: '座',
+            pinyin: 'zuò',
+            english: 'large geographic objects',
+            type: 'measure word'
+          },
+          {
+            id: 7,
+            chinese: '逃生',
+            pinyin: 'táoshēng',
+            english: "to escape with one's life",
+            type: 'verb'
+          },
+          {
+            id: 8,
+            chinese: '头等舱',
+            pinyin: 'tóuděngcāng',
+            english: 'first class',
+            type: 'noun'
+          },
+          {
+            id: 9,
+            chinese: '救生艇',
+            pinyin: 'jiùshēngtǐng',
+            english: 'lifeboat',
+            type: 'noun'
+          },
+          {
+            id: 10,
+            chinese: '怪',
+            pinyin: 'guài',
+            english: 'to blame',
+            type: 'verb'
+          },
+          {
+            id: 11,
+            chinese: '三等舱',
+            pinyin: 'sānděngcāng',
+            english: 'third class cabin',
+            type: 'noun'
+          },
+          {
+            id: 12,
+            chinese: '抢',
+            pinyin: 'qiǎng',
+            english: 'to rob',
+            type: 'verb'
+          },
+          {
+            id: 13,
+            chinese: '渗水',
+            pinyin: 'shènshuǐ',
+            english: 'to sink under water',
+            type: 'verb'
+          },
+          {
+            id: 14,
+            chinese: '次',
+            pinyin: 'cì',
+            english: 'poor quality',
+            type: 'adjective'
+          }
         ]
       },
       {
@@ -118,10 +318,110 @@ export default new Vuex.Store({
             pinyin: 'Tā mā de',
             english: 'Damn!'
           }
+        ],
+        vocabulary: [
+          {
+            id: 1,
+            chinese: '泰坦尼克号',
+            pinyin: 'Tàitǎnníkè hào',
+            english: 'Titanic',
+            type: 'noun'
+          },
+          {
+            id: 2,
+            chinese: '咱们',
+            pinyin: 'zánmen',
+            english: 'we',
+            type: 'pronoun'
+          },
+          {
+            id: 3,
+            chinese: '海水',
+            pinyin: 'hǎishuǐ',
+            english: 'seawater',
+            type: 'noun'
+          },
+          {
+            id: 4,
+            chinese: '冰川',
+            pinyin: 'bīngchuān',
+            english: 'glacier (colloquially iceberg as well)',
+            type: 'noun'
+          },
+          {
+            id: 5,
+            chinese: '冰山',
+            pinyin: 'bīngshān',
+            english: 'iceberg',
+            type: 'noun'
+          },
+          {
+            id: 6,
+            chinese: '座',
+            pinyin: 'zuò',
+            english: 'large geographic objects',
+            type: 'measure word'
+          },
+          {
+            id: 7,
+            chinese: '逃生',
+            pinyin: 'táoshēng',
+            english: "to escape with one's life",
+            type: 'verb'
+          },
+          {
+            id: 8,
+            chinese: '头等舱',
+            pinyin: 'tóuděngcāng',
+            english: 'first class',
+            type: 'noun'
+          },
+          {
+            id: 9,
+            chinese: '救生艇',
+            pinyin: 'jiùshēngtǐng',
+            english: 'lifeboat',
+            type: 'noun'
+          },
+          {
+            id: 10,
+            chinese: '怪',
+            pinyin: 'guài',
+            english: 'to blame',
+            type: 'verb'
+          },
+          {
+            id: 11,
+            chinese: '三等舱',
+            pinyin: 'sānděngcāng',
+            english: 'third class cabin',
+            type: 'noun'
+          },
+          {
+            id: 12,
+            chinese: '抢',
+            pinyin: 'qiǎng',
+            english: 'to rob',
+            type: 'verb'
+          },
+          {
+            id: 13,
+            chinese: '渗水',
+            pinyin: 'shènshuǐ',
+            english: 'to sink under water',
+            type: 'verb'
+          },
+          {
+            id: 14,
+            chinese: '次',
+            pinyin: 'cì',
+            english: 'poor quality',
+            type: 'adjective'
+          }
         ]
       },
       {
-          id: 4,
+        id: 4,
         thumbnail: "https://cdn.vuetifyjs.com/images/lists/4.jpg",
         title: "Assault, Battery and the Future",
         level: "Elementary",
@@ -155,6 +455,106 @@ export default new Vuex.Store({
             chinese: '他妈的!',
             pinyin: 'Tā mā de',
             english: 'Damn!'
+          }
+        ],
+        vocabulary: [
+          {
+            id: 1,
+            chinese: '泰坦尼克号',
+            pinyin: 'Tàitǎnníkè hào',
+            english: 'Titanic',
+            type: 'noun'
+          },
+          {
+            id: 2,
+            chinese: '咱们',
+            pinyin: 'zánmen',
+            english: 'we',
+            type: 'pronoun'
+          },
+          {
+            id: 3,
+            chinese: '海水',
+            pinyin: 'hǎishuǐ',
+            english: 'seawater',
+            type: 'noun'
+          },
+          {
+            id: 4,
+            chinese: '冰川',
+            pinyin: 'bīngchuān',
+            english: 'glacier (colloquially iceberg as well)',
+            type: 'noun'
+          },
+          {
+            id: 5,
+            chinese: '冰山',
+            pinyin: 'bīngshān',
+            english: 'iceberg',
+            type: 'noun'
+          },
+          {
+            id: 6,
+            chinese: '座',
+            pinyin: 'zuò',
+            english: 'large geographic objects',
+            type: 'measure word'
+          },
+          {
+            id: 7,
+            chinese: '逃生',
+            pinyin: 'táoshēng',
+            english: "to escape with one's life",
+            type: 'verb'
+          },
+          {
+            id: 8,
+            chinese: '头等舱',
+            pinyin: 'tóuděngcāng',
+            english: 'first class',
+            type: 'noun'
+          },
+          {
+            id: 9,
+            chinese: '救生艇',
+            pinyin: 'jiùshēngtǐng',
+            english: 'lifeboat',
+            type: 'noun'
+          },
+          {
+            id: 10,
+            chinese: '怪',
+            pinyin: 'guài',
+            english: 'to blame',
+            type: 'verb'
+          },
+          {
+            id: 11,
+            chinese: '三等舱',
+            pinyin: 'sānděngcāng',
+            english: 'third class cabin',
+            type: 'noun'
+          },
+          {
+            id: 12,
+            chinese: '抢',
+            pinyin: 'qiǎng',
+            english: 'to rob',
+            type: 'verb'
+          },
+          {
+            id: 13,
+            chinese: '渗水',
+            pinyin: 'shènshuǐ',
+            english: 'to sink under water',
+            type: 'verb'
+          },
+          {
+            id: 14,
+            chinese: '次',
+            pinyin: 'cì',
+            english: 'poor quality',
+            type: 'adjective'
           }
         ]
       },
@@ -194,6 +594,106 @@ export default new Vuex.Store({
             pinyin: 'Tā mā de',
             english: 'Damn!'
           }
+        ],
+        vocabulary: [
+          {
+            id: 1,
+            chinese: '泰坦尼克号',
+            pinyin: 'Tàitǎnníkè hào',
+            english: 'Titanic',
+            type: 'noun'
+          },
+          {
+            id: 2,
+            chinese: '咱们',
+            pinyin: 'zánmen',
+            english: 'we',
+            type: 'pronoun'
+          },
+          {
+            id: 3,
+            chinese: '海水',
+            pinyin: 'hǎishuǐ',
+            english: 'seawater',
+            type: 'noun'
+          },
+          {
+            id: 4,
+            chinese: '冰川',
+            pinyin: 'bīngchuān',
+            english: 'glacier (colloquially iceberg as well)',
+            type: 'noun'
+          },
+          {
+            id: 5,
+            chinese: '冰山',
+            pinyin: 'bīngshān',
+            english: 'iceberg',
+            type: 'noun'
+          },
+          {
+            id: 6,
+            chinese: '座',
+            pinyin: 'zuò',
+            english: 'large geographic objects',
+            type: 'measure word'
+          },
+          {
+            id: 7,
+            chinese: '逃生',
+            pinyin: 'táoshēng',
+            english: "to escape with one's life",
+            type: 'verb'
+          },
+          {
+            id: 8,
+            chinese: '头等舱',
+            pinyin: 'tóuděngcāng',
+            english: 'first class',
+            type: 'noun'
+          },
+          {
+            id: 9,
+            chinese: '救生艇',
+            pinyin: 'jiùshēngtǐng',
+            english: 'lifeboat',
+            type: 'noun'
+          },
+          {
+            id: 10,
+            chinese: '怪',
+            pinyin: 'guài',
+            english: 'to blame',
+            type: 'verb'
+          },
+          {
+            id: 11,
+            chinese: '三等舱',
+            pinyin: 'sānděngcāng',
+            english: 'third class cabin',
+            type: 'noun'
+          },
+          {
+            id: 12,
+            chinese: '抢',
+            pinyin: 'qiǎng',
+            english: 'to rob',
+            type: 'verb'
+          },
+          {
+            id: 13,
+            chinese: '渗水',
+            pinyin: 'shènshuǐ',
+            english: 'to sink under water',
+            type: 'verb'
+          },
+          {
+            id: 14,
+            chinese: '次',
+            pinyin: 'cì',
+            english: 'poor quality',
+            type: 'adjective'
+          }
         ]
       },
       {
@@ -231,6 +731,106 @@ export default new Vuex.Store({
             chinese: '他妈的!',
             pinyin: 'Tā mā de',
             english: 'Damn!'
+          }
+        ],
+        vocabulary: [
+          {
+            id: 1,
+            chinese: '泰坦尼克号',
+            pinyin: 'Tàitǎnníkè hào',
+            english: 'Titanic',
+            type: 'noun'
+          },
+          {
+            id: 2,
+            chinese: '咱们',
+            pinyin: 'zánmen',
+            english: 'we',
+            type: 'pronoun'
+          },
+          {
+            id: 3,
+            chinese: '海水',
+            pinyin: 'hǎishuǐ',
+            english: 'seawater',
+            type: 'noun'
+          },
+          {
+            id: 4,
+            chinese: '冰川',
+            pinyin: 'bīngchuān',
+            english: 'glacier (colloquially iceberg as well)',
+            type: 'noun'
+          },
+          {
+            id: 5,
+            chinese: '冰山',
+            pinyin: 'bīngshān',
+            english: 'iceberg',
+            type: 'noun'
+          },
+          {
+            id: 6,
+            chinese: '座',
+            pinyin: 'zuò',
+            english: 'large geographic objects',
+            type: 'measure word'
+          },
+          {
+            id: 7,
+            chinese: '逃生',
+            pinyin: 'táoshēng',
+            english: "to escape with one's life",
+            type: 'verb'
+          },
+          {
+            id: 8,
+            chinese: '头等舱',
+            pinyin: 'tóuděngcāng',
+            english: 'first class',
+            type: 'noun'
+          },
+          {
+            id: 9,
+            chinese: '救生艇',
+            pinyin: 'jiùshēngtǐng',
+            english: 'lifeboat',
+            type: 'noun'
+          },
+          {
+            id: 10,
+            chinese: '怪',
+            pinyin: 'guài',
+            english: 'to blame',
+            type: 'verb'
+          },
+          {
+            id: 11,
+            chinese: '三等舱',
+            pinyin: 'sānděngcāng',
+            english: 'third class cabin',
+            type: 'noun'
+          },
+          {
+            id: 12,
+            chinese: '抢',
+            pinyin: 'qiǎng',
+            english: 'to rob',
+            type: 'verb'
+          },
+          {
+            id: 13,
+            chinese: '渗水',
+            pinyin: 'shènshuǐ',
+            english: 'to sink under water',
+            type: 'verb'
+          },
+          {
+            id: 14,
+            chinese: '次',
+            pinyin: 'cì',
+            english: 'poor quality',
+            type: 'adjective'
           }
         ]
       },
@@ -270,6 +870,106 @@ export default new Vuex.Store({
             pinyin: 'Tā mā de',
             english: 'Damn!'
           }
+        ],
+        vocabulary: [
+          {
+            id: 1,
+            chinese: '泰坦尼克号',
+            pinyin: 'Tàitǎnníkè hào',
+            english: 'Titanic',
+            type: 'noun'
+          },
+          {
+            id: 2,
+            chinese: '咱们',
+            pinyin: 'zánmen',
+            english: 'we',
+            type: 'pronoun'
+          },
+          {
+            id: 3,
+            chinese: '海水',
+            pinyin: 'hǎishuǐ',
+            english: 'seawater',
+            type: 'noun'
+          },
+          {
+            id: 4,
+            chinese: '冰川',
+            pinyin: 'bīngchuān',
+            english: 'glacier (colloquially iceberg as well)',
+            type: 'noun'
+          },
+          {
+            id: 5,
+            chinese: '冰山',
+            pinyin: 'bīngshān',
+            english: 'iceberg',
+            type: 'noun'
+          },
+          {
+            id: 6,
+            chinese: '座',
+            pinyin: 'zuò',
+            english: 'large geographic objects',
+            type: 'measure word'
+          },
+          {
+            id: 7,
+            chinese: '逃生',
+            pinyin: 'táoshēng',
+            english: "to escape with one's life",
+            type: 'verb'
+          },
+          {
+            id: 8,
+            chinese: '头等舱',
+            pinyin: 'tóuděngcāng',
+            english: 'first class',
+            type: 'noun'
+          },
+          {
+            id: 9,
+            chinese: '救生艇',
+            pinyin: 'jiùshēngtǐng',
+            english: 'lifeboat',
+            type: 'noun'
+          },
+          {
+            id: 10,
+            chinese: '怪',
+            pinyin: 'guài',
+            english: 'to blame',
+            type: 'verb'
+          },
+          {
+            id: 11,
+            chinese: '三等舱',
+            pinyin: 'sānděngcāng',
+            english: 'third class cabin',
+            type: 'noun'
+          },
+          {
+            id: 12,
+            chinese: '抢',
+            pinyin: 'qiǎng',
+            english: 'to rob',
+            type: 'verb'
+          },
+          {
+            id: 13,
+            chinese: '渗水',
+            pinyin: 'shènshuǐ',
+            english: 'to sink under water',
+            type: 'verb'
+          },
+          {
+            id: 14,
+            chinese: '次',
+            pinyin: 'cì',
+            english: 'poor quality',
+            type: 'adjective'
+          }
         ]
       },
       {
@@ -307,6 +1007,106 @@ export default new Vuex.Store({
             chinese: '他妈的!',
             pinyin: 'Tā mā de',
             english: 'Damn!'
+          }
+        ],
+        vocabulary: [
+          {
+            id: 1,
+            chinese: '泰坦尼克号',
+            pinyin: 'Tàitǎnníkè hào',
+            english: 'Titanic',
+            type: 'noun'
+          },
+          {
+            id: 2,
+            chinese: '咱们',
+            pinyin: 'zánmen',
+            english: 'we',
+            type: 'pronoun'
+          },
+          {
+            id: 3,
+            chinese: '海水',
+            pinyin: 'hǎishuǐ',
+            english: 'seawater',
+            type: 'noun'
+          },
+          {
+            id: 4,
+            chinese: '冰川',
+            pinyin: 'bīngchuān',
+            english: 'glacier (colloquially iceberg as well)',
+            type: 'noun'
+          },
+          {
+            id: 5,
+            chinese: '冰山',
+            pinyin: 'bīngshān',
+            english: 'iceberg',
+            type: 'noun'
+          },
+          {
+            id: 6,
+            chinese: '座',
+            pinyin: 'zuò',
+            english: 'large geographic objects',
+            type: 'measure word'
+          },
+          {
+            id: 7,
+            chinese: '逃生',
+            pinyin: 'táoshēng',
+            english: "to escape with one's life",
+            type: 'verb'
+          },
+          {
+            id: 8,
+            chinese: '头等舱',
+            pinyin: 'tóuděngcāng',
+            english: 'first class',
+            type: 'noun'
+          },
+          {
+            id: 9,
+            chinese: '救生艇',
+            pinyin: 'jiùshēngtǐng',
+            english: 'lifeboat',
+            type: 'noun'
+          },
+          {
+            id: 10,
+            chinese: '怪',
+            pinyin: 'guài',
+            english: 'to blame',
+            type: 'verb'
+          },
+          {
+            id: 11,
+            chinese: '三等舱',
+            pinyin: 'sānděngcāng',
+            english: 'third class cabin',
+            type: 'noun'
+          },
+          {
+            id: 12,
+            chinese: '抢',
+            pinyin: 'qiǎng',
+            english: 'to rob',
+            type: 'verb'
+          },
+          {
+            id: 13,
+            chinese: '渗水',
+            pinyin: 'shènshuǐ',
+            english: 'to sink under water',
+            type: 'verb'
+          },
+          {
+            id: 14,
+            chinese: '次',
+            pinyin: 'cì',
+            english: 'poor quality',
+            type: 'adjective'
           }
         ]
       }
