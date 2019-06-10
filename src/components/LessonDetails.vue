@@ -42,7 +42,7 @@ export default {
     }
   },
   created (){
-      //Update the timeStamp, in order to always sort the lesson list to the most recently opened lesson
+      this.$store.dispatch('updateTimestamp', this.$route.params.id);
   },
   computed: {
     currentLesson(){

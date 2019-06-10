@@ -3,7 +3,7 @@
         <table>
             <tbody>
                 <tr v-for="word in currentLesson.vocabulary" :key="word.id">
-                    <td class="chinese">{{word.chinese}}</td>
+                    <td class="chinese" >{{word.chinese}}</td>
                     <td class="english">{{word.pinyin}}</td>
                     <td class="english">{{word.english}}</td>
                     <td class="english">{{word.type}}</td>
