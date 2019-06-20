@@ -1110,6 +1110,23 @@ export default new Vuex.Store({
           }
         ]
       }
+    ],
+    favorites: [
+      {
+        id: 1,
+        lessonId: 1,
+        timeAdded: "2019-01-01"
+      },
+      {
+        id: 2,
+        lessonId: 2,
+        timeAdded: "2019-01-02"
+      },
+      {
+        id: 3,
+        lessonId: 3,
+        timeAdded: "2019-01-03"
+      },
     ]
   },
   mutations: {
@@ -1121,6 +1138,7 @@ export default new Vuex.Store({
   },
   actions: {
     updateTimestamp(context, lessonId) {
+      
       context.commit('updateTimestamp', lessonId);
     }
   }

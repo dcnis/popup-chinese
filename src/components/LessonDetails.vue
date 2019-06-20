@@ -6,15 +6,15 @@
     <router-view></router-view>
     <br><br>
     <v-bottom-nav fixed :value="e31" absolute color="transparent">
-        <v-btn flat color="teal" to="discussion">
+        <v-btn flat color="#00C48F" to="discussion">
           <span>Discussion</span>
           <v-icon>feedback</v-icon>
         </v-btn>
-      <v-btn flat color="teal" to="transcript">
+      <v-btn flat color="#00C48F" to="transcript">
         <span>Transcript</span>
         <v-icon>clear_all</v-icon>
       </v-btn>
-      <v-btn flat color="teal" to="vocabulary">
+      <v-btn flat color="#00C48F" to="vocabulary">
         <span>Vocabulary</span>
         <v-icon>translate</v-icon>
       </v-btn>
@@ -54,6 +54,6 @@ export default {
 
 <style scoped>
 .level {
-  color: #00695C;
+  color: #75BAA7;
 }
 </style>

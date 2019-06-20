@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire">
+  <v-app light id="popup">
     <v-navigation-drawer v-model="drawer" fixed app>
       <v-list dense>
         <v-list-tile to="/">
@@ -11,10 +11,10 @@
           </v-list-tile-content>
         </v-list-tile>
 
-        <v-list-group prepend-icon="layers" value="true">
+        <v-list-group prepend-icon="layers" value="true" color="#00C48F">
           <template v-slot:activator>
             <v-list-tile>
-              <v-list-tile-title>Chinese Lessons</v-list-tile-title>
+              <v-list-tile-title >Chinese Lessons</v-list-tile-title>
             </v-list-tile>
           </template>
 
@@ -47,6 +47,15 @@
           </v-list-tile>
         </v-list-group>
 
+        <v-list-tile to="/favorites">
+          <v-list-tile-action>
+            <v-icon>star</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Favorites</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
         <v-list-tile to="/about">
           <v-list-tile-action>
             <v-icon>info</v-icon>
@@ -57,7 +66,7 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar color="teal" dark fixed app>
+    <v-toolbar color="#86E0C8" dark fixed app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title>POPUP CHINESE</v-toolbar-title>
     </v-toolbar>
@@ -66,13 +75,14 @@
         <router-view></router-view>
       </v-container>
     </v-content>
-    <v-footer color="teal darken-4" app>
+    <v-footer color="grey lighten-4" app>
       <span class="white--text">Copyright Dennis Schmidt 2019</span>
     </v-footer>
   </v-app>
 </template>
 
 <script>
+
 export default {
   name: 'App',
   props: {
@@ -85,3 +95,11 @@ export default {
   }
 };
 </script>
+
+<style>
+.primary--text {
+    color: #43E0B6 !important;
+    caret-color: #43E0B6 !important;
+}
+</style>
+

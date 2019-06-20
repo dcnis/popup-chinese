@@ -11,6 +11,7 @@ import LessonDetails from './components/LessonDetails.vue';
 import Discussion from './components/Discussion.vue';
 import Transcript from './components/Transcript.vue';
 import Vocabulary from './components/Vocabulary.vue';
+import Favorites from './views/Favorites.vue';
 
 Vue.use(Router);
 
@@ -20,6 +21,7 @@ export default new Router({
   routes: [
     { path: '/', component: Home },
     { path: '/lessons', component: Lessons },
+    { path: '/favorites', component: Favorites},
     { path: '/about', component: About },
     { path: '/lessons-absolute-beginners', component: AbsoluteBeginners },
     { path: '/lessons-elementary', component: Elementary },
