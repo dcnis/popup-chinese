@@ -1,0 +1,17 @@
+query getLatestLessonsOfUser($userId: Int!){
+  user_lessons(
+    where:{userId:{_eq:$userId}}
+    order_by:{lastTimeWatched:desc}, 
+    limit:5){
+    lastTimeWatched
+    lesson{
+      id
+      thumbnail
+      level
+      title
+      discussion
+      transcript
+      vocabulary
+      }
+  }
+}

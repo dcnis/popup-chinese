@@ -5,10 +5,18 @@
 </template>
 
 <script>
+import gql from 'graphql-tag'
+
+
 export default {
+    data(){
+        return {
+            lessons: []
+        }
+    },
     computed: {
         currentLesson () {
-            return this.$store.state.lessons.find(item => item.id == this.$route.params.id);
+            return this.lessons.find(item => item.id == this.$route.params.id);
         }
     }
     

@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-list two-line>
-      <template v-for="(lesson) in lessonsFilteredAndSorted">
+      <template v-for="lesson in lessons">
         <v-list-tile :key="lesson.id" thumbnail :to="'/lesson/' + lesson.id">
           <v-list-tile-avatar>
             <img :src="lesson.thumbnail">
@@ -18,26 +18,39 @@
 </template>
 
 <script>
+import gql from 'graphql-tag'
+import getLessonsByLevel from '../apollo/queries/getLessonsByLevel.gql'
+
 export default {
   props: {
     level: String
   },
-  computed: {
-    lessonsFilteredAndSorted() {
-      return this.$store.state.lessons
-        .filter(item => item.level == this.level)
-        .sort(function(a, b) {
-          return new Date(b.lastTimeWatched) - new Date(a.lastTimeWatched);
-        });
-    }
-  },
   data() {
-    return {};
+    return {
+      lessons: []
+    };
   },
   methods: {
     openLesson() {
           console.log('Lesson opened');
     }
+  },
+  apollo:{
+    lessons: {
+      query: getLessonsByLevel,
+      variables() {
+        return {
+          level: this.level
+        }
+      },
+      error(error){
+        console.log(error.message);
+      }
+      
+    }
+  },
+  created(){
+    console.log(this.level)
   }
-} ;
+};
 </script>

@@ -82,17 +82,17 @@
 </template>
 
 <script>
-
 export default {
   name: 'App',
   props: {
-    source: String
+    source: String,
+    lessons: []
   },
   data() {
     return {
-      drawer: null
+      drawer: null,
     };
-  }
+  },
 };
 </script>
 

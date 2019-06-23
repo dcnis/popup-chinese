@@ -24,13 +24,30 @@
 
 <script>
 import VuetifyAudio from "vuetify-audio";
+import gql from 'graphql-tag'
+
+const getLessons = gql`
+        query getLessons{
+            lessons{
+            id
+            thumbnail
+            level
+            title
+            discussion
+            transcript
+            vocabulary
+            }
+        }
+    `;
+
 
 export default {
   data() {
     return {
       e3: 0,
       e31: true,
-      file: "http://popupchinese.com/data/1390/audio.mp3"
+      file: "http://popupchinese.com/data/1390/audio.mp3",
+      lessons: []
     };
   },
   components: {
@@ -46,7 +63,12 @@ export default {
   },
   computed: {
     currentLesson(){
-     return this.$store.state.lessons.find(item => item.id == this.$route.params.id);
+     return this.lessons.find(item => item.id == this.$route.params.id);
+    }
+  },
+    apollo:{
+    lessons: {
+      query: getLessons,
     }
   }
 };
