@@ -1,5 +1,7 @@
 <template>
   <div>
+    <div v-if="$apollo.queries.lessons.loading">Lesson loading..</div>
+    <div v-else>
     <h1><span class="level">{{currentLesson.level}}</span> - {{currentLesson.title}}</h1>
     <vuetify-audio :file="file" :ended="audioFinish"></vuetify-audio>
     {{ this.$route.params.id }}
@@ -20,26 +22,12 @@
       </v-btn>
     </v-bottom-nav>
   </div>
+  </div>
 </template>
 
 <script>
 import VuetifyAudio from "vuetify-audio";
-import gql from 'graphql-tag'
-
-const getLessons = gql`
-        query getLessons{
-            lessons{
-            id
-            thumbnail
-            level
-            title
-            discussion
-            transcript
-            vocabulary
-            }
-        }
-    `;
-
+import getLessonById from './../apollo/queries/getLessonById.gql'
 
 export default {
   data() {
@@ -59,17 +47,25 @@ export default {
     }
   },
   created (){
-      this.$store.dispatch('updateTimestamp', this.$route.params.id);
+      // this.$store.dispatch('updateTimestamp', this.$route.params.id);
+  },
+  apollo: {
+      lessons: {
+        query: getLessonById,
+        variables() {
+          return {
+            lessonId: this.$route.params.id
+          }
+        },
+        error(error){
+          console.log("Error " + error.message);
+        }
+      }
   },
   computed: {
     currentLesson(){
-     return this.lessons.find(item => item.id == this.$route.params.id);
-    }
-  },
-    apollo:{
-    lessons: {
-      query: getLessons,
-    }
+      return this.lessons[0];
+    } 
   }
 };
 </script>

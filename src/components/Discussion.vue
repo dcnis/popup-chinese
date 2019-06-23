@@ -1,12 +1,14 @@
 <template>
     <div>
+        <div v-if="$apollo.queries.lessons.loading">Loading..</div>
+        <div v-else>
         <p>{{currentLesson.discussion}}</p>
+        </div>
     </div>
 </template>
 
 <script>
-import gql from 'graphql-tag'
-
+import getLessonById from '../apollo/queries/getLessonById.gql'
 
 export default {
     data(){
@@ -14,9 +16,22 @@ export default {
             lessons: []
         }
     },
+    apollo: {
+        lessons: {
+           query: getLessonById,
+            variables() {
+                return {
+                    lessonId: this.$route.params.id
+                }
+            },
+            error(error){
+                console.error("Error fetching Lesson " + error.message);
+            }
+        }
+    },
     computed: {
-        currentLesson () {
-            return this.lessons.find(item => item.id == this.$route.params.id);
+        currentLesson(){
+            return this.lessons[0];
         }
     }
     

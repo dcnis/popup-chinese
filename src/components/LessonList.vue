@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div v-if="$apollo.queries.lessons.loading">Loading..</div>
     <v-list two-line>
       <template v-for="lesson in lessons">
         <v-list-tile :key="lesson.id" thumbnail :to="'/lesson/' + lesson.id">
@@ -18,7 +19,6 @@
 </template>
 
 <script>
-import gql from 'graphql-tag'
 import getLessonsByLevel from '../apollo/queries/getLessonsByLevel.gql'
 
 export default {
@@ -48,9 +48,6 @@ export default {
       }
       
     }
-  },
-  created(){
-    console.log(this.level)
   }
 };
 </script>
