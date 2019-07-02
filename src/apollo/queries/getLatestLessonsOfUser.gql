@@ -1,6 +1,6 @@
-query getLatestLessonsOfUser($userId: Int!){
+query getLatestLessonsOfUser($userId: String!){
   user_lessons(
-    where:{userId:{_eq:$userId}}
+    where:{user_id:{_eq:$userId}}
     order_by:{lastTimeWatched:desc}, 
     limit:5){
     lastTimeWatched

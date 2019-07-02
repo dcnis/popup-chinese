@@ -34,7 +34,7 @@ export default {
   data(){
     return {
       user_lessons: [],
-      myId: 1
+      myId: "1"
     }
   },
   computed: {
