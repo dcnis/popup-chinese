@@ -6,11 +6,11 @@
 </template>
 
 <script>
-import LessonList from '../components/LessonList.vue'
+import LessonList from '../components/LessonList.vue';
 
 export default {
-    components: {
-        LessonList
-    }
+  components: {
+    LessonList
+  }
 };
 </script>

@@ -9,8 +9,8 @@
 import LessonList from '../components/LessonList.vue';
 
 export default {
-    components: {
-        LessonList,
-    }
+  components: {
+    LessonList
+  }
 };
 </script>

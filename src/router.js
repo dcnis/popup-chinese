@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
-import Lessons from './views/Lessons.vue';
 import About from './views/About.vue';
 import AbsoluteBeginners from './views/AbsoluteBeginners';
 import Elementary from './views/Elementary.vue';
@@ -20,7 +19,6 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     { path: '/', component: Home },
-    { path: '/lessons', component: Lessons },
     { path: '/favorites', component: Favorites },
     { path: '/about', component: About },
     { path: '/lessons-absolute-beginners', component: AbsoluteBeginners },

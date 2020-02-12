@@ -40,13 +40,13 @@ export default {
   computed: {
 
   },
-  apollo:{
+  apollo: {
     user_lessons: {
       query: getLatestLessonsOfUser,
       variables() {
         return {
           userId: this.myId
-        }
+        };
       }
     }
   }

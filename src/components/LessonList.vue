@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import getLessonsByLevel from '../apollo/queries/getLessonsByLevel.gql'
+import getLessonsByLevel from '../apollo/queries/getLessonsByLevel.gql';
 
 export default {
   props: {
@@ -32,21 +32,21 @@ export default {
   },
   methods: {
     openLesson() {
-          console.log('Lesson opened');
+      console.log('Lesson opened');
     }
   },
-  apollo:{
+  apollo: {
     lessons: {
       query: getLessonsByLevel,
       variables() {
         return {
           level: this.level
-        }
+        };
       },
-      error(error){
+      error(error) {
         console.log(error.message);
       }
-      
+
     }
   }
 };
