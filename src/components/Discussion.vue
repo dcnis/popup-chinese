@@ -8,32 +8,32 @@
 </template>
 
 <script>
-import getLessonById from '../apollo/queries/getLessonById.gql'
+import getLessonById from '../apollo/queries/getLessonById.gql';
 
 export default {
-    data(){
+  data() {
+    return {
+      lessons: []
+    };
+  },
+  apollo: {
+    lessons: {
+      query: getLessonById,
+      variables() {
         return {
-            lessons: []
-        }
-    },
-    apollo: {
-        lessons: {
-           query: getLessonById,
-            variables() {
-                return {
-                    lessonId: this.$route.params.id
-                }
-            },
-            error(error){
-                console.error("Error fetching Lesson " + error.message);
-            }
-        }
-    },
-    computed: {
-        currentLesson(){
-            return this.lessons[0];
-        }
+          lessonId: this.$route.params.id
+        };
+      },
+      error(error) {
+        console.error('Error fetching Lesson ' + error.message);
+      }
     }
-    
-}
+  },
+  computed: {
+    currentLesson() {
+      return this.lessons[0];
+    }
+  }
+
+};
 </script>

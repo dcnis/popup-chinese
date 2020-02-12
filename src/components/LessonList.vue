@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="$apollo.queries.lessons.loading">Loading..</div>
+    <div v-if="$apollo.queries.lessons.loading">w..</div>
     <v-list two-line>
       <template v-for="lesson in lessons">
         <v-list-item :key="lesson.id" thumbnail :to="'/lesson/' + lesson.id">

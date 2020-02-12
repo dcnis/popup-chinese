@@ -2,25 +2,26 @@
   <div>
     <div v-if="$apollo.queries.lessons.loading">Lesson loading..</div>
     <div v-else>
-    <h1><span class="level">{{currentLesson.level}}</span> - {{currentLesson.title}}</h1>
+    <h3>{{currentLesson.title}}</h3>
+    <span class="level">{{currentLesson.level}}</span><br><br>
     <vuetify-audio :file="file" :ended="audioFinish"></vuetify-audio>
     {{ this.$route.params.id }}
     <router-view></router-view>
     <br><br>
-    <v-bottom-nav fixed :value="e31" absolute color="transparent">
-        <v-btn flat color="#00C48F" to="discussion">
+    <v-bottom-navigation fixed :value="e31" absolute grow color="teal">
+        <v-btn to="discussion">
           <span>Discussion</span>
           <v-icon>feedback</v-icon>
         </v-btn>
-      <v-btn flat color="#00C48F" to="transcript">
+      <v-btn to="transcript">
         <span>Transcript</span>
         <v-icon>clear_all</v-icon>
       </v-btn>
-      <v-btn flat color="#00C48F" to="vocabulary">
+      <v-btn to="vocabulary">
         <span>Vocabulary</span>
         <v-icon>translate</v-icon>
       </v-btn>
-    </v-bottom-nav>
+    </v-bottom-navigation>
   </div>
   </div>
 </template>
