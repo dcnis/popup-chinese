@@ -5,6 +5,13 @@
     <h3>{{currentLesson.title}}</h3>
     <span class="level">{{currentLesson.level}}</span><br><br>
     <vuetify-audio :file="file" :ended="audioFinish"></vuetify-audio>
+    <v-container>
+    <v-layout justify-end>
+        <v-btn text icon color="pink" v-on:click="toggleLike">
+          <v-icon v-bind:disabled="!liked">mdi-heart</v-icon>
+        </v-btn>
+    </v-layout>
+    </v-container>
     {{ this.$route.params.id }}
     <router-view></router-view>
     <br><br>
@@ -36,7 +43,8 @@ export default {
       e3: 0,
       e31: true,
       file: 'http://popupchinese.com/data/1390/audio.mp3',
-      lessons: []
+      lessons: [],
+      liked: false
     };
   },
   components: {
@@ -45,6 +53,19 @@ export default {
   methods: {
     audioFinish() {
       console.log('You see this means audio finish.');
+    },
+    toggleLike() {
+      if (this.liked) {
+        this.unlikeLesson();
+      } else {
+        this.likeLesson();
+      }
+    },
+    likeLesson() {
+      this.liked = true;
+    },
+    unlikeLesson() {
+      this.liked = false;
     }
   },
   created() {
