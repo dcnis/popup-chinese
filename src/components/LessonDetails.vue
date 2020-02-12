@@ -26,15 +26,15 @@
 </template>
 
 <script>
-import VuetifyAudio from "vuetify-audio";
-import getLessonById from './../apollo/queries/getLessonById.gql'
+import VuetifyAudio from 'vuetify-audio';
+import getLessonById from './../apollo/queries/getLessonById.gql';
 
 export default {
   data() {
     return {
       e3: 0,
       e31: true,
-      file: "http://popupchinese.com/data/1390/audio.mp3",
+      file: 'http://popupchinese.com/data/1390/audio.mp3',
       lessons: []
     };
   },
@@ -43,29 +43,29 @@ export default {
   },
   methods: {
     audioFinish() {
-      console.log("You see this means audio finish.");
+      console.log('You see this means audio finish.');
     }
   },
-  created (){
-      // this.$store.dispatch('updateTimestamp', this.$route.params.id);
+  created() {
+    // this.$store.dispatch('updateTimestamp', this.$route.params.id);
   },
   apollo: {
-      lessons: {
-        query: getLessonById,
-        variables() {
-          return {
-            lessonId: this.$route.params.id
-          }
-        },
-        error(error){
-          console.log("Error " + error.message);
-        }
+    lessons: {
+      query: getLessonById,
+      variables() {
+        return {
+          lessonId: this.$route.params.id
+        };
+      },
+      error(error) {
+        console.log('Error ' + error.message);
       }
+    }
   },
   computed: {
-    currentLesson(){
+    currentLesson() {
       return this.lessons[0];
-    } 
+    }
   }
 };
 </script>

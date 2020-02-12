@@ -9,14 +9,13 @@
 import LessonList from '../components/LessonList.vue';
 
 export default {
-    components: {
-        LessonList
-    },
-    data(){
-        return {
-            level: "Absolute Beginners"
-        };
-    }
-}
+  components: {
+    LessonList
+  },
+  data() {
+    return {
+      level: 'Absolute Beginners'
+    };
+  }
+};
 </script>
-

@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import './plugins/vuetify';
+import vuetify from './plugins/vuetify';
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -11,11 +11,12 @@ Vue.use(VueApollo);
 
 const apolloProvider = new VueApollo({
   defaultClient: apollo
-})
+});
 
 new Vue({
   router,
   store,
+  vuetify,
   apolloProvider,
   render: h => h(App)
-}).$mount('#app')
+}).$mount('#app');

@@ -21,18 +21,19 @@ export default new Router({
   routes: [
     { path: '/', component: Home },
     { path: '/lessons', component: Lessons },
-    { path: '/favorites', component: Favorites},
+    { path: '/favorites', component: Favorites },
     { path: '/about', component: About },
     { path: '/lessons-absolute-beginners', component: AbsoluteBeginners },
     { path: '/lessons-elementary', component: Elementary },
     { path: '/lessons-intermediate', component: Intermediate },
     { path: '/lessons-advanced', component: Advanced },
-    { path: '/lesson/:id', component: LessonDetails,
-            children: [
-              { path: '', redirect: 'discussion' },
-              { path: 'discussion', name:'discussionName', component: Discussion },
-              { path: 'transcript', component: Transcript },
-              { path: 'vocabulary', component: Vocabulary },
-            ] }
+    { path: '/lesson/:id',
+      component: LessonDetails,
+      children: [
+        { path: '', redirect: 'discussion' },
+        { path: 'discussion', name: 'discussionName', component: Discussion },
+        { path: 'transcript', component: Transcript },
+        { path: 'vocabulary', component: Vocabulary }
+      ] }
   ]
 });

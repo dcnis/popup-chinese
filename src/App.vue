@@ -1,75 +1,76 @@
 <template>
   <v-app light id="popup">
-    <v-navigation-drawer v-model="drawer" fixed app>
-      <v-list dense>
-        <v-list-tile to="/">
-          <v-list-tile-action>
-            <v-icon>home</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Home</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+    <v-navigation-drawer
+      v-model="drawer"
+      app
+      >
+      <v-list dense nav>
+        <v-list-item to="/">
+          <v-list-item-action>
+            <v-icon>mdi-home</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Home</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
 
-        <v-list-group prepend-icon="layers" value="true" color="#00C48F">
+        <v-list-group prepend-icon="layers" value="true">
           <template v-slot:activator>
-            <v-list-tile>
-              <v-list-tile-title >Chinese Lessons</v-list-tile-title>
-            </v-list-tile>
+              <v-list-item-title >Chinese Lessons</v-list-item-title>
           </template>
 
-          <v-list-tile to="/lessons-absolute-beginners">
-            <v-list-tile-action></v-list-tile-action>
-            <v-list-tile-title>Absolute Beginners</v-list-tile-title>
+          <v-list-item to="/lessons-absolute-beginners">
+            <v-list-item-action></v-list-item-action>
+            <v-list-item-title>Absolute Beginners</v-list-item-title>
             <v-icon>child_care</v-icon>
-          </v-list-tile>
+          </v-list-item>
 
-          <v-list-tile to="/lessons-elementary">
-            <v-list-tile-action></v-list-tile-action>
-            <v-list-tile-title>Elementary</v-list-tile-title>
+          <v-list-item to="/lessons-elementary">
+            <v-list-item-action></v-list-item-action>
+            <v-list-item-title>Elementary</v-list-item-title>
             <v-icon>spa</v-icon>
-          </v-list-tile>
+          </v-list-item>
 
-          <v-list-tile to="/lessons-intermediate">
-            <v-list-tile-action></v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title>Intermediate</v-list-tile-title>
-            </v-list-tile-content>
+          <v-list-item to="/lessons-intermediate">
+            <v-list-item-action></v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>Intermediate</v-list-item-title>
+            </v-list-item-content>
             <v-icon>star</v-icon>
-          </v-list-tile>
+          </v-list-item>
 
-          <v-list-tile to="/lessons-advanced">
-            <v-list-tile-action></v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title>Advanced</v-list-tile-title>
-            </v-list-tile-content>
+          <v-list-item to="/lessons-advanced">
+            <v-list-item-action></v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>Advanced</v-list-item-title>
+            </v-list-item-content>
             <v-icon>school</v-icon>
-          </v-list-tile>
+          </v-list-item>
         </v-list-group>
 
-        <v-list-tile to="/favorites">
-          <v-list-tile-action>
+        <v-list-item to="/favorites">
+          <v-list-item-action>
             <v-icon>star</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Favorites</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Favorites</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
 
-        <v-list-tile to="/about">
-          <v-list-tile-action>
+        <v-list-item to="/about">
+          <v-list-item-action>
             <v-icon>info</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>About</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>About</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar color="#86E0C8" dark fixed app>
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+    <v-app-bar color="#86E0C8" dark fixed app>
+      <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
       <v-toolbar-title>POPUP CHINESE</v-toolbar-title>
-    </v-toolbar>
+    </v-app-bar>
     <v-content>
       <v-container fluid>
         <router-view></router-view>
@@ -90,9 +91,9 @@ export default {
   },
   data() {
     return {
-      drawer: null,
+      drawer: null
     };
-  },
+  }
 };
 </script>
 
@@ -102,4 +103,3 @@ export default {
     caret-color: #43E0B6 !important;
 }
 </style>
-

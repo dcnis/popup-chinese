@@ -10,16 +10,16 @@
     <h2>Latest lessons</h2>
     <v-list two-line>
       <template v-for="entry in user_lessons">
-        <v-list-tile :key="entry.lesson.id" thumbnail :to="'/lesson/' + entry.lesson.id">
-          <v-list-tile-avatar>
+        <v-list-item :key="entry.lesson.id" thumbnail :to="'/lesson/' + entry.lesson.id">
+          <v-list-item-avatar>
             <img :src="entry.lesson.thumbnail">
-          </v-list-tile-avatar>
+          </v-list-item-avatar>
 
-          <v-list-tile-content>
-            <v-list-tile-title v-html="entry.lesson.title"></v-list-tile-title>
-            <v-list-tile-sub-title v-html="entry.lesson.level"></v-list-tile-sub-title>
-          </v-list-tile-content>
-        </v-list-tile>
+          <v-list-item-content>
+            <v-list-item-title v-html="entry.lesson.title"></v-list-item-title>
+            <v-list-item-sub-title v-html="entry.lesson.level"></v-list-item-sub-title>
+          </v-list-item-content>
+        </v-list-item>
       </template>
     </v-list>
     </div>
@@ -27,15 +27,15 @@
 </template>
 
 <script>
-import gql from 'graphql-tag'
-import getLatestLessonsOfUser from './../apollo/queries/getLatestLessonsOfUser.gql'
+import gql from 'graphql-tag';
+import getLatestLessonsOfUser from './../apollo/queries/getLatestLessonsOfUser.gql';
 
 export default {
-  data(){
+  data() {
     return {
       user_lessons: [],
-      myId: "1"
-    }
+      myId: '1'
+    };
   },
   computed: {
 

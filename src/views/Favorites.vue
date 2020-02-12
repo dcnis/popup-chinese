@@ -4,16 +4,16 @@
 
     <v-list two-line>
       <template v-for="(fav) in favoriteLessons">
-        <v-list-tile :key="fav.id" thumbnail :to="'/lesson/' + fav.lessonId">
-          <v-list-tile-avatar>
-  
-          </v-list-tile-avatar>
+        <v-list-item :key="fav.id" thumbnail :to="'/lesson/' + fav.lessonId">
+          <v-list-item-avatar>
 
-          <v-list-tile-content>
-            <v-list-tile-title v-html="lesson.title"></v-list-tile-title>
-            <v-list-tile-sub-title v-html="lesson.level"></v-list-tile-sub-title>
-          </v-list-tile-content>
-        </v-list-tile>
+          </v-list-item-avatar>
+
+          <v-list-item-content>
+            <v-list-item-title v-html="lesson.title"></v-list-item-title>
+            <v-list-item-sub-title v-html="lesson.level"></v-list-item-sub-title>
+          </v-list-item-content>
+        </v-list-item>
       </template>
     </v-list>
   </div>
@@ -24,9 +24,9 @@ export default {
   computed: {
     favoriteLessons() {
       return this.$store.state.favoriteLessons
-      .sort(function(a, b) {
-        return new Date(b.timeAdded) - new Date(a.timeAdded);
-      });
+        .sort(function(a, b) {
+          return new Date(b.timeAdded) - new Date(a.timeAdded);
+        });
     }
   }
 };
