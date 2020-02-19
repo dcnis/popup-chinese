@@ -14,7 +14,7 @@ export default {
   },
   data() {
     return {
-      level: 'Absolute Beginners'
+      level: 1
     };
   }
 };

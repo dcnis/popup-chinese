@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="$apollo.queries.lessons.loading">w..</div>
+    <div v-if="loading">Loading..</div>
     <v-list two-line>
       <template v-for="lesson in lessons">
         <v-list-item :key="lesson.id" thumbnail :to="'/lesson/' + lesson.id">
@@ -10,7 +10,7 @@
 
           <v-list-item-content>
             <v-list-item-title v-html="lesson.title"></v-list-item-title>
-            <v-list-item-subtitle v-html="lesson.level"></v-list-item-subtitle>
+            <v-list-item-subtitle v-html="lesson.difficulty.description"></v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
       </template>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import getLessonsByLevel from '../apollo/queries/getLessonsByLevel.gql';
+import axios from 'axios';
 
 export default {
   props: {
@@ -27,7 +27,8 @@ export default {
   },
   data() {
     return {
-      lessons: []
+      lessons: [],
+      loading: true
     };
   },
   methods: {
@@ -35,19 +36,17 @@ export default {
       console.log('Lesson opened');
     }
   },
-  apollo: {
-    lessons: {
-      query: getLessonsByLevel,
-      variables() {
-        return {
-          level: this.level
-        };
-      },
-      error(error) {
-        console.log(error.message);
-      }
-
-    }
+  created() {
+    const searchedLevel = {
+      difficulty: this.level
+    };
+    axios.post('https://heroku-popup-chinese-backend.herokuapp.com/findLessonsByDifficulty', searchedLevel)
+      .then(res => {
+        console.log('Response' + res);
+        this.lessons = res.data;
+      })
+      .catch(err => console.log(err))
+      .finally(() => this.loading = false);
   }
 };
 </script>
