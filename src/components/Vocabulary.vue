@@ -4,11 +4,11 @@
         <div v-else>
         <table>
             <tbody>
-                <tr v-for="word in currentLesson.vocabulary" :key="word.id">
+                <tr v-for="word in vocabulary" :key="word.vocabularyId">
                     <td class="chinese" >{{word.chinese}}</td>
                     <td class="english">{{word.pinyin}}</td>
                     <td class="english">{{word.english}}</td>
-                    <td class="english">{{word.type}}</td>
+                    <td class="english">{{word.typ}}</td>
                 </tr>
             </tbody>
         </table>
@@ -17,13 +17,24 @@
 </template>
 
 <script>
+import axios from 'axios';
 
 export default {
   data() {
     return {
       currentLesson: null,
-      loading: true
+      loading: true,
+      vocabulary: []
     };
+  },
+  created() {
+    axios.get('https://heroku-popup-chinese-backend.herokuapp.com/getVocabularyByLessonId/' +
+          this.$route.params.id)
+      .then((response) => {
+        this.vocabulary = response.data;
+      })
+      .catch((err) => console.error(err))
+      .finally(() => (this.loading = false));
   }
 };
 </script>
