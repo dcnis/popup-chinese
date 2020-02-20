@@ -2,17 +2,13 @@
     <div>
         <div v-if="loading">Loading..</div>
         <div v-else>
-        <table>
-            <tbody>
-                <tr v-for="word in vocabulary" :key="word.vocabularyId">
-                    <td class="chinese" >{{word.chinese}}</td>
-                    <td class="english">{{word.pinyin}}</td>
-                    <td class="english">{{word.english}}</td>
-                    <td class="english">{{word.typ}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+          <v-data-table
+                :headers="headers"
+                :items="vocabulary"
+                :items-per-page="100"
+                class="elevation-2"
+          ></v-data-table>
+        </div>
     </div>
 </template>
 
@@ -24,7 +20,17 @@ export default {
     return {
       currentLesson: null,
       loading: true,
-      vocabulary: []
+      vocabulary: [],
+      headers: [
+        {
+          text: 'Chinese',
+          align: 'left',
+          sortable: false,
+          value: 'chinese'
+        },
+        { text: 'Pinyin', sortable: false, value: 'pinyin' },
+        { text: 'English', sortable: false, value: 'english' }
+      ]
     };
   },
   created() {
@@ -55,11 +61,11 @@ th {
 
 td {
   vertical-align: top;
+  line-height: 30px;
 }
 
-th, td {
-  min-width: 120px;
-  padding: 10px 20px;
+th {
+
 }
 
 .chinese {
@@ -67,6 +73,7 @@ th, td {
 }
 .english {
     color: #757575;
+    font-size: 18px;
 }
 .speaker{
     size: 20%
