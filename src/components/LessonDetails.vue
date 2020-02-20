@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div v-if="$apollo.queries.lessons.loading">Lesson loading..</div>
+    <div v-if="loading">Lesson loading..</div>
     <div v-else>
     <h3>{{currentLesson.title}}</h3>
-    <span class="level">{{currentLesson.level}}</span><br><br>
+    <span class="level">{{currentLesson.difficulty.description}}</span><br><br>
     <vuetify-audio :file="file" :ended="audioFinish"></vuetify-audio>
     <v-container>
     <v-layout justify-end>
@@ -35,7 +35,7 @@
 
 <script>
 import VuetifyAudio from 'vuetify-audio';
-import getLessonById from './../apollo/queries/getLessonById.gql';
+import axios from 'axios';
 
 export default {
   data() {
@@ -43,8 +43,9 @@ export default {
       e3: 0,
       e31: true,
       file: 'http://popupchinese.com/data/1390/audio.mp3',
-      lessons: [],
-      liked: false
+      currentLesson: null,
+      liked: false,
+      loading: true
     };
   },
   components: {
@@ -69,25 +70,15 @@ export default {
     }
   },
   created() {
-    // this.$store.dispatch('updateTimestamp', this.$route.params.id);
-  },
-  apollo: {
-    lessons: {
-      query: getLessonById,
-      variables() {
-        return {
-          lessonId: this.$route.params.id
-        };
-      },
-      error(error) {
-        console.log('Error ' + error.message);
-      }
-    }
-  },
-  computed: {
-    currentLesson() {
-      return this.lessons[0];
-    }
+    console.log('starte request');
+    axios.get('https://heroku-popup-chinese-backend.herokuapp.com/getLesson/' + this.$route.params.id)
+      .then(response => {
+        console.log('response: ' + response.data);
+        this.currentLesson = response.data;
+        this.$store.dispatch('addLesson', this.currentLesson);
+      })
+      .catch(err => console.log('Error: ' + err))
+      .finally(() => (this.loading = false));
   }
 };
 </script>

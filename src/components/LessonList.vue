@@ -23,7 +23,7 @@ import axios from 'axios';
 
 export default {
   props: {
-    level: String
+    level: Number
   },
   data() {
     return {
@@ -46,7 +46,7 @@ export default {
         this.lessons = res.data;
       })
       .catch(err => console.log(err))
-      .finally(() => this.loading = false);
+      .finally(() => (this.loading = false));
   }
 };
 </script>
