@@ -22,7 +22,10 @@ export default new Vuex.Store({
       context.commit('updateTimestamp', lessonId);
     },
     addLesson(context, lesson) {
-      context.commit('addLesson', lesson);
+      var found = this.state.lessons.includes(item => item.id == lesson.id);
+      if (found === false) {
+        context.commit('addLesson', lesson);
+      }
     }
   }
 });

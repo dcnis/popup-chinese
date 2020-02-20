@@ -1,39 +1,21 @@
 <template>
     <div>
-        <div v-if="$apollo.queries.lessons.loading">Loading..</div>
-        <div v-else>
-        <p>{{currentLesson.discussion}}</p>
-        </div>
+        <p>{{currentLesson[0].discussion}}</p>
     </div>
 </template>
 
 <script>
-import getLessonById from '../apollo/queries/getLessonById.gql';
 
 export default {
   data() {
     return {
-      lessons: []
+      currentLesson: null
     };
   },
-  apollo: {
-    lessons: {
-      query: getLessonById,
-      variables() {
-        return {
-          lessonId: this.$route.params.id
-        };
-      },
-      error(error) {
-        console.error('Error fetching Lesson ' + error.message);
-      }
-    }
-  },
-  computed: {
-    currentLesson() {
-      return this.lessons[0];
-    }
+  created() {
+    this.currentLesson = this.$store.state.lessons
+      .filter(item => item.id == this.$route.params.id);
+    console.log('DetailLesson: ' + JSON.stringify(this.currentLesson));
   }
-
 };
 </script>
