@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="$apollo.queries.lessons.loading">Loading..</div>
+        <div v-if="loading">Loading..</div>
         <div v-else>
         <table>
             <tbody>
@@ -17,35 +17,16 @@
 </template>
 
 <script>
-import getLessonById from '../apollo/queries/getLessonById.gql'
 
 export default {
-    data(){
-        return {
-            lessons: []
-        }
-    },
-    apollo: {
-        lessons: {
-           query: getLessonById,
-            variables() {
-                return {
-                    lessonId: this.$route.params.id
-                }
-            },
-            error(error){
-                console.error("Error fetching Lesson " + error.message);
-            }
-        }
-    },
-    computed: {
-        currentLesson(){
-            return this.lessons[0];
-        }
-    }
-}
+  data() {
+    return {
+      currentLesson: null,
+      loading: true
+    };
+  }
+};
 </script>
-
 
 <style scoped>
 table{
