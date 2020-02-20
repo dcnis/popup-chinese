@@ -1,12 +1,12 @@
 <template>
     <div>
-        <div v-if="$apollo.queries.lessons.loading">Loading..</div>
+        <div v-if="loading">Loading..</div>
         <div v-else>
         <v-container>
             <v-layout>
         <table>
             <tbody>
-                <tr v-for="dialogLine in currentLesson.transcript" :key="dialogLine.line">
+                <tr v-for="dialogLine in dialogs" :key="dialogLine.dialogId">
                     <td class="speaker">{{dialogLine.speaker}}</td>
                     <td>
                         <span class="chinese">{{dialogLine.chinese}}</span> <br>
@@ -25,34 +25,26 @@
 </template>
 
 <script>
-import getLessonById from '../apollo/queries/getLessonById.gql'
+import axios from 'axios';
 
 export default {
-    data(){
-        return {
-            lessons: []
-        }
-    },
-    apollo: {
-        lessons: {
-           query: getLessonById,
-            variables() {
-                return {
-                    lessonId: this.$route.params.id
-                }
-            },
-            error(error){
-                console.error("Error fetching Lesson " + error.message);
-            }
-        }
-    },
-    computed: {
-        currentLesson(){
-            return this.lessons[0];
-        }
-    }
-    
-}
+  data() {
+    return {
+      loading: true,
+      dialogs: []
+    };
+  },
+  created() {
+    axios.get('https://heroku-popup-chinese-backend.herokuapp.com/getDialogsByLessonId/' +
+            this.$route.params.id)
+      .then((response) => {
+        this.dialogs = response.data;
+      })
+      .catch((err) => console.error(err))
+      .finally(() => (this.loading = false));
+  }
+
+};
 </script>
 
 <style scoped>
@@ -88,4 +80,3 @@ th, td {
     size: 20%
 }
 </style>
-
