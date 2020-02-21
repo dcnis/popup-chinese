@@ -6,7 +6,10 @@
                 :headers="headers"
                 :items="vocabulary"
                 :items-per-page="100"
-                class="elevation-2"
+                :mobile-breakpoint="NaN"
+                :disable-pagination="true"
+                :hide-default-footer="true"
+                class="elevation-2 myStyle"
           ></v-data-table>
         </div>
     </div>
@@ -62,10 +65,6 @@ th {
 td {
   vertical-align: top;
   line-height: 30px;
-}
-
-th {
-
 }
 
 .chinese {
