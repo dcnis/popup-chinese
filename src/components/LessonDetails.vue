@@ -12,7 +12,6 @@
         </v-btn>
     </v-layout>
     </v-container>
-    {{ this.$route.params.id }}
     <router-view></router-view>
     <br><br>
     <v-bottom-navigation fixed :value="e31" absolute grow color="teal">
@@ -52,9 +51,6 @@ export default {
     VuetifyAudio
   },
   methods: {
-    audioFinish() {
-      console.log('You see this means audio finish.');
-    },
     toggleLike() {
       if (this.liked) {
         this.unlikeLesson();
@@ -67,13 +63,13 @@ export default {
     },
     unlikeLesson() {
       this.liked = false;
+    },
+    audioFinish() {
     }
   },
   created() {
-    console.log('starte request');
     axios.get('https://heroku-popup-chinese-backend.herokuapp.com/getLesson/' + this.$route.params.id)
       .then(response => {
-        console.log('response: ' + response.data);
         this.currentLesson = response.data;
         this.$store.dispatch('addLesson', this.currentLesson);
       })

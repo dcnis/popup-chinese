@@ -82,7 +82,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 
 export default {
   name: 'App',
@@ -95,28 +94,6 @@ export default {
       drawer: null,
       authenticated: false
     };
-  },
-  created() {
-    // axios.get('https://dev-137527.okta.com')
-    //   .then(response => {
-    //     alert(this.response.data);
-    //   });
-
-    // var baseUrl = 'https://heroku-popup-chinese-backend.herokuapp.com/getDialogsByLessonId/1';
-    // var xhr = new XMLHttpRequest();
-    // if ('withCredentials' in xhr) {
-    //   xhr.onerror = function() {
-    //     alert('Invalid URL or Cross-Origin Request Blocked.  You must explicitly add this site (' + window.location.origin + ') to the list of allowed websites in the administrator UI');
-    //   };
-    //   xhr.onload = function() {
-    //     alert(this.responseText);
-    //   };
-    //   xhr.open('GET', baseUrl, true);
-    //   xhr.withCredentials = true;
-    //   xhr.send();
-    // } else {
-    //   alert('CORS is not supported for this browser!');
-    // }
   },
   updated() {
     this.isAuthenticated();

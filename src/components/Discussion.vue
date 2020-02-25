@@ -15,7 +15,6 @@ export default {
   created() {
     this.currentLesson = this.$store.state.lessons
       .filter(item => item.id == this.$route.params.id);
-    console.log('DetailLesson: ' + JSON.stringify(this.currentLesson));
   }
 };
 </script>

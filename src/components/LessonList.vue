@@ -31,11 +31,6 @@ export default {
       loading: true
     };
   },
-  methods: {
-    openLesson() {
-      console.log('Lesson opened');
-    }
-  },
   async created() {
     axios.defaults.headers.common['Authorization'] = `Bearer ${await this.$auth.getAccessToken()}`;
     const searchedLevel = {
@@ -43,7 +38,6 @@ export default {
     };
     axios.post('https://heroku-popup-chinese-backend.herokuapp.com/findLessonsByDifficulty', searchedLevel)
       .then(res => {
-        console.log('Response' + res);
         this.lessons = res.data;
       })
       .catch(err => console.log(err))

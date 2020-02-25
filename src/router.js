@@ -18,7 +18,7 @@ Vue.use(Router);
 Vue.use(Auth, {
   issuer: 'https://dev-137527.okta.com/oauth2/default',
   clientId: '0oa2ibx8wdHZ7tg2n4x6',
-  redirectUri: 'https://heroku-popup-chinese-frontend.herokuapp.com/implicit/callback',
+  redirectUri: 'http://localhost:8080/implicit/callback',
   scopes: ['openid', 'profile', 'email'],
   pkce: true
 });
