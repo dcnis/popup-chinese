@@ -67,22 +67,23 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
+
     <v-app-bar color="#86E0C8" dark fixed app>
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-      <v-toolbar-title>POPUP CHINESE</v-toolbar-title>
+      <v-btn outlined right fixed v-if="authenticated" v-on:click="logout" id="logout-button"> {{buttonText}} </v-btn>
+      <v-btn outlined right fixed v-else v-on:click="login" id="login-button"> {{buttonText}} </v-btn>
     </v-app-bar>
     <v-content>
       <v-container fluid>
         <router-view></router-view>
       </v-container>
     </v-content>
-    <v-footer color="grey lighten-4" app>
-      <span class="white--text">Copyright Dennis Schmidt 2019</span>
-    </v-footer>
   </v-app>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'App',
   props: {
@@ -91,8 +92,54 @@ export default {
   },
   data() {
     return {
-      drawer: null
+      drawer: null,
+      authenticated: false
     };
+  },
+  created() {
+    // axios.get('https://dev-137527.okta.com')
+    //   .then(response => {
+    //     alert(this.response.data);
+    //   });
+
+    // var baseUrl = 'https://heroku-popup-chinese-backend.herokuapp.com/getDialogsByLessonId/1';
+    // var xhr = new XMLHttpRequest();
+    // if ('withCredentials' in xhr) {
+    //   xhr.onerror = function() {
+    //     alert('Invalid URL or Cross-Origin Request Blocked.  You must explicitly add this site (' + window.location.origin + ') to the list of allowed websites in the administrator UI');
+    //   };
+    //   xhr.onload = function() {
+    //     alert(this.responseText);
+    //   };
+    //   xhr.open('GET', baseUrl, true);
+    //   xhr.withCredentials = true;
+    //   xhr.send();
+    // } else {
+    //   alert('CORS is not supported for this browser!');
+    // }
+  },
+  updated() {
+    this.isAuthenticated();
+  },
+  methods: {
+    async isAuthenticated() {
+      this.authenticated = await this.$auth.isAuthenticated();
+    },
+    login() {
+      this.$auth.loginRedirect('/');
+    },
+    async logout() {
+      await this.$auth.logout();
+      await this.isAuthenticated();
+
+      // Navigate back to home
+      this.$router.push({ path: '/' });
+    }
+  },
+  computed: {
+    buttonText() {
+      return (this.authenticated ? 'Logout' : 'Login');
+    }
   }
 };
 </script>

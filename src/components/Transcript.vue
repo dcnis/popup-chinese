@@ -2,24 +2,25 @@
     <div>
         <div v-if="loading">Loading..</div>
         <div v-else>
-        <v-container>
-            <v-layout>
-        <table>
-            <tbody>
-                <tr v-for="dialogLine in dialogs" :key="dialogLine.dialogId">
-                    <td class="speaker">{{dialogLine.speaker}}</td>
-                    <td>
-                        <span class="chinese">{{dialogLine.chinese}}</span> <br>
-                        <span class="english">
-                        {{dialogLine.pinyin}} <br>
-                        {{dialogLine.english}}
-                        </span>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        </v-layout>
-        </v-container>
+        <v-simple-table :light="true">
+        <template v-slot:default>
+          <thead>
+            <tr>
+              <th class="text-left">Speaker</th>
+              <th class="text-left">Dialog</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="item in dialogs" :key="item.dialogId">
+              <td>{{item.speaker}}</td>
+              <td>{{item.chinese}}<br>
+                  {{item.pinyin}}<br>
+                  {{item.english}}<br>
+              </td>
+            </tr>
+          </tbody>
+        </template>
+        </v-simple-table>
     </div>
     </div>
 </template>
@@ -31,7 +32,18 @@ export default {
   data() {
     return {
       loading: true,
-      dialogs: []
+      dialogs: [],
+      headers: [
+        {
+          text: 'Speaker',
+          align: 'left',
+          sortable: false,
+          value: 'speaker'
+        },
+        { text: 'Dialog', value: 'chinese' },
+        { value: 'pinyin' },
+        { value: 'english' }
+      ]
     };
   },
   created() {

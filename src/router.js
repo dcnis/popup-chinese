@@ -11,20 +11,31 @@ import Discussion from './components/Discussion.vue';
 import Transcript from './components/Transcript.vue';
 import Vocabulary from './components/Vocabulary.vue';
 import Favorites from './views/Favorites.vue';
+import Login from './views/Login.vue';
+import Auth from '@okta/okta-vue';
 
 Vue.use(Router);
+Vue.use(Auth, {
+  issuer: 'https://dev-137527.okta.com/oauth2/default',
+  clientId: '0oa2ibx8wdHZ7tg2n4x6',
+  redirectUri: 'http://localhost:8080/implicit/callback',
+  scopes: ['openid', 'profile', 'email'],
+  pkce: true
+});
 
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     { path: '/', component: Home },
+    { path: '/implicit/callback', component: Auth.handleCallback() },
     { path: '/favorites', component: Favorites },
     { path: '/about', component: About },
     { path: '/lessons-absolute-beginners', component: AbsoluteBeginners },
     { path: '/lessons-elementary', component: Elementary },
     { path: '/lessons-intermediate', component: Intermediate },
     { path: '/lessons-advanced', component: Advanced },
+    { path: '/login', component: Login },
     { path: '/lesson/:id',
       component: LessonDetails,
       children: [

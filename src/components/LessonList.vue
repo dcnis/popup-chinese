@@ -36,7 +36,8 @@ export default {
       console.log('Lesson opened');
     }
   },
-  created() {
+  async created() {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${await this.$auth.getAccessToken()}`;
     const searchedLevel = {
       difficulty: this.level
     };
