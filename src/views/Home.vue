@@ -5,8 +5,7 @@
     </h1>
     <p>Congratulations on finding the world's best community for learning Chinese. If you're just getting started, check out our collection of Chinese podcasts first. These are broken down by difficulty and can be covered in any order: important words and concepts will repeat. Once you understand the basics move on to our collection of Chinese videos, or test yourself with our collection of sample hsk tests. More advanced students are encouraged to check out our archive of manually annotated Chinese short stories.</p>
 
-    <div v-if="$apollo.queries.user_lessons.loading">Loading...</div>
-    <div v-else>
+    <div v-if="isLoggedIn">
     <h2>Latest lessons</h2>
     <v-list two-line>
       <template v-for="entry in user_lessons">
@@ -27,8 +26,6 @@
 </template>
 
 <script>
-import gql from 'graphql-tag';
-import getLatestLessonsOfUser from './../apollo/queries/getLatestLessonsOfUser.gql';
 
 export default {
   data() {
@@ -38,16 +35,8 @@ export default {
     };
   },
   computed: {
-
-  },
-  apollo: {
-    user_lessons: {
-      query: getLatestLessonsOfUser,
-      variables() {
-        return {
-          userId: this.myId
-        };
-      }
+    isLoggedIn() {
+      return this.$store.state.isAuthenticated;
     }
   }
 };

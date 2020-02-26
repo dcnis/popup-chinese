@@ -5,7 +5,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    lessons: []
+    lessons: [],
+    isAuthenticated: false
   },
   mutations: {
     updateTimestamp(state, lessonId) {
@@ -15,6 +16,11 @@ export default new Vuex.Store({
     },
     addLesson(state, lesson) {
       state.lessons.push(lesson);
+    },
+    isAuthenticated(state, isAuth) {
+      state.isAuthenticated = isAuth;
+      console.log('Set state to ' + isAuth);
+      Vue.nextTick();
     }
   },
   actions: {
@@ -29,6 +35,9 @@ export default new Vuex.Store({
     },
     auth_request(context, user) {
 
+    },
+    async isAuthenticated(context, isAuth) {
+      context.commit('isAuthenticated', isAuth);
     }
   }
 });

@@ -70,7 +70,7 @@
 
     <v-app-bar color="#86E0C8" dark fixed app>
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-      <v-btn outlined right fixed v-if="authenticated" v-on:click="logout" id="logout-button"> {{buttonText}} </v-btn>
+      <v-btn outlined right fixed  v-if="isLoggedIn" v-on:click="logout" id="logout-button"> {{buttonText}} </v-btn>
       <v-btn outlined right fixed v-else v-on:click="login" id="login-button"> {{buttonText}} </v-btn>
     </v-app-bar>
     <v-content>
@@ -91,8 +91,7 @@ export default {
   },
   data() {
     return {
-      drawer: null,
-      authenticated: false
+      drawer: null
     };
   },
   updated() {
@@ -100,7 +99,7 @@ export default {
   },
   methods: {
     async isAuthenticated() {
-      this.authenticated = await this.$auth.isAuthenticated();
+      this.$store.dispatch('isAuthenticated', await this.$auth.isAuthenticated());
     },
     login() {
       this.$auth.loginRedirect('/');
@@ -109,13 +108,15 @@ export default {
       await this.$auth.logout();
       await this.isAuthenticated();
 
-      // Navigate back to home
-      this.$router.push({ path: '/' });
+      this.$route.push('/');
     }
   },
   computed: {
     buttonText() {
-      return (this.authenticated ? 'Logout' : 'Login');
+      return (this.$store.state.isAuthenticated ? 'Logout' : 'Login');
+    },
+    isLoggedIn() {
+      return this.$store.state.isAuthenticated;
     }
   }
 };
