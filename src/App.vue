@@ -96,6 +96,7 @@ export default {
   },
   updated() {
     this.isAuthenticated();
+    this.getUserData();
   },
   methods: {
     async isAuthenticated() {
@@ -107,8 +108,16 @@ export default {
     async logout() {
       await this.$auth.logout();
       await this.isAuthenticated();
+      this.$store.dispatch('deleteUserData');
 
-      this.$route.push('/');
+      this.$router.push('/');
+    },
+    getUserData() {
+      this.$store.dispatch('getUserData')
+        .then(response => {
+        }, error => {
+          console.error('error ', error);
+        });
     }
   },
   computed: {

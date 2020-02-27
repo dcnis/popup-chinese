@@ -6,7 +6,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     lessons: [],
-    isAuthenticated: false
+    isAuthenticated: false,
+    userData: null
   },
   mutations: {
     updateTimestamp(state, lessonId) {
@@ -19,8 +20,14 @@ export default new Vuex.Store({
     },
     isAuthenticated(state, isAuth) {
       state.isAuthenticated = isAuth;
-      console.log('Set state to ' + isAuth);
       Vue.nextTick();
+    },
+    setUserData(state, userData) {
+      state.userData = userData;
+      Vue.nextTick();
+    },
+    deleteUserData(state) {
+      state.userData = null;
     }
   },
   actions: {
@@ -38,6 +45,20 @@ export default new Vuex.Store({
     },
     async isAuthenticated(context, isAuth) {
       context.commit('isAuthenticated', isAuth);
+    },
+    getUserData(context, userData) {
+      return new Promise((resolve, reject) => {
+        Vue.prototype.$auth.getUser()
+          .then(response => {
+            context.commit('setUserData', response);
+            resolve(response);
+          }, error => {
+            reject(error);
+          });
+      });
+    },
+    deleteUserData(context) {
+      context.commit('deleteUserData');
     }
   }
 });
