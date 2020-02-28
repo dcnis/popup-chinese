@@ -1,20 +1,20 @@
 <template>
     <div>
-        <p>{{currentLesson[0].discussion}}</p>
+        <p>{{lesson.discussion}}</p>
     </div>
 </template>
 
 <script>
 
 export default {
+  props: ['lesson'],
   data() {
     return {
       currentLesson: null
     };
   },
   created() {
-    this.currentLesson = this.$store.state.lessons
-      .filter(item => item.id == this.$route.params.id);
+    console.log('lesson ' + JSON.stringify(this.lesson));
   }
 };
 </script>

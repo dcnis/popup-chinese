@@ -43,9 +43,10 @@ const router = new Router({
     { path: '/login', component: Login },
     { path: '/lesson/:id',
       component: LessonDetails,
+      props: true,
       children: [
         { path: '', redirect: 'discussion' },
-        { path: 'discussion', name: 'discussionName', component: Discussion },
+        { path: 'discussion', component: Discussion, props: true },
         { path: 'transcript', component: Transcript },
         { path: 'vocabulary', component: Vocabulary }
       ] }

@@ -11,11 +11,10 @@
 
     <v-list two-line>
       <template v-for="entry in usersLatestLessons.data">
-        <v-list-item :key="entry.id" :to="'/lesson/' + entry.lessonId">
+        <v-list-item :key="entry.id" :to="'/lesson/' + entry.lessonId.id">
           <v-list-item-avatar>
             <img :src="entry.lessonId.thumbnail">
           </v-list-item-avatar>
-
           <v-list-item-content>
             <v-list-item-title>{{entry.lessonId.title}}</v-list-item-title>
             <v-list-item-subtitle class="text--primary" v-text="entry.lessonId.difficulty.description"></v-list-item-subtitle>

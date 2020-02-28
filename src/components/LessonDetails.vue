@@ -12,7 +12,7 @@
         </v-btn>
     </v-layout>
     </v-container>
-    <router-view></router-view>
+    <router-view :lesson="currentLesson"></router-view>
     <br><br>
     <v-bottom-navigation fixed :value="e31" absolute grow color="teal">
         <v-btn to="discussion">
@@ -37,12 +37,13 @@ import VuetifyAudio from 'vuetify-audio';
 import axios from 'axios';
 
 export default {
+  props: ['id'],
   data() {
     return {
       e3: 0,
       e31: true,
       file: 'http://popupchinese.com/data/1390/audio.mp3',
-      currentLesson: null,
+      currentLesson: {},
       liked: false,
       loading: true
     };
@@ -68,10 +69,9 @@ export default {
     }
   },
   created() {
-    axios.get('https://heroku-popup-chinese-backend.herokuapp.com/getLesson/' + this.$route.params.id)
+    axios.get('https://heroku-popup-chinese-backend.herokuapp.com/getLesson/' + this.id)
       .then(response => {
         this.currentLesson = response.data;
-        this.$store.dispatch('addLesson', this.currentLesson);
       })
       .catch(err => console.log('Error: ' + err))
       .finally(() => (this.loading = false));

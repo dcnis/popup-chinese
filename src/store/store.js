@@ -10,7 +10,7 @@ const store = new Vuex.Store({
     userdata
   },
   state: {
-    lessons: [],
+    lessonsByDifficulty: [],
     latestLessons: [],
     authenticated: false,
     user: {}
@@ -36,6 +36,9 @@ const store = new Vuex.Store({
     },
     setUserData(state, user) {
       state.user = user;
+    },
+    setLessonsByDiffculty(state, lessons) {
+      state.lessonsByDifficulty = lessons;
     }
   },
   actions: {
@@ -60,6 +63,17 @@ const store = new Vuex.Store({
       } else {
         context.commit('deleteUserData');
       }
+    },
+    async fetchLessonsByDiffculty(context, level) {
+      axios.defaults.headers.common['Authorization'] = `Bearer ${await Vue.prototype.$auth.getAccessToken()}`;
+      const searchedLevel = {
+        difficulty: level
+      };
+      axios.post('https://heroku-popup-chinese-backend.herokuapp.com/findLessonsByDifficulty', searchedLevel)
+        .then(res => {
+          context.commit('setLessonsByDiffculty', res.data);
+        })
+        .catch(err => console.log(err));
     }
   }
 });
