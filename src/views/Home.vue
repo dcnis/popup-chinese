@@ -37,11 +37,11 @@ export default {
     };
   },
   created() {
-    console.log('I created Home.vue');
+
   },
   computed: {
     isLoggedIn() {
-      return this.$store.state.isAuthenticated;
+      return this.$store.state.authenticated;
     },
     ...mapState(['latestLessons']),
     ...mapGetters(['allUserdata'])

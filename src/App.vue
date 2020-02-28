@@ -70,7 +70,7 @@
 
     <v-app-bar color="#86E0C8" dark fixed app>
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-      <v-btn outlined right fixed v-if="authenticated" v-on:click="logout" id="logout-button"> Logout </v-btn>
+      <v-btn outlined right fixed v-if="isLoggedIn" v-on:click="logout" id="logout-button"> Logout </v-btn>
       <v-btn outlined right fixed v-else v-on:click="login" id="login-button"> Login </v-btn>
     </v-app-bar>
     <v-content>
@@ -103,20 +103,22 @@ export default {
       this.$auth.loginRedirect('/');
     },
     async isAuthenticated() {
-      this.authenticated = await this.$auth.isAuthenticated();
+      this.$store.dispatch('fetchAuthentication', await this.$auth.isAuthenticated());
     },
     async logout() {
       await this.$auth.logout();
-      await this.$auth.isAuthenticated();
-      this.$router.push({ path: '/' });
-    },
-    async getUserData() {
-      await this.$store.dispatch('getUserData');
+      await this.isAuthenticated();
+      this.$router.push({ path: './' });
     }
   },
   watch: {
     // Everytime the route changes, check for auth status
     '$route': 'isAuthenticated'
+  },
+  computed: {
+    isLoggedIn() {
+      return this.$store.state.authenticated;
+    }
   }
 };
 </script>
