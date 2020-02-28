@@ -1,13 +1,20 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import axios from 'axios';
+import userdata from './modules/userdata';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  modules: {
+    userdata
+  },
   state: {
     lessons: [],
-    isAuthenticated: false,
-    userData: null
+    latestLessons: []
+  },
+  getters: {
+    getAuthenticationState: (state) => state.isAuthenticated
   },
   mutations: {
     updateTimestamp(state, lessonId) {
@@ -15,44 +22,28 @@ export default new Vuex.Store({
         .filter(item => item.id === lessonId)
         .map(lesson => (lesson.lastTimeWatched = new Date().toISOString()));
     },
-    addLesson(state, lesson) {
-      state.lessons.push(lesson);
-    },
-    isAuthenticated(state, isAuth) {
-      state.isAuthenticated = isAuth;
-      Vue.nextTick();
-    },
-    setUserData(state, userData) {
-      state.userData = userData;
-      Vue.nextTick();
-    },
     deleteUserData(state) {
       state.userData = null;
+    },
+    setLatestLessonsOfUser(state, latestLessons) {
+      this.latestLessons = latestLessons;
+      Vue.nextTick();
     }
   },
   actions: {
     updateTimestamp(context, lessonId) {
       context.commit('updateTimestamp', lessonId);
     },
-    addLesson(context, lesson) {
-      var found = this.state.lessons.includes(item => item.id == lesson.id);
-      if (found === false) {
-        context.commit('addLesson', lesson);
-      }
-    },
-    auth_request(context, user) {
-
-    },
-    async isAuthenticated(context, isAuth) {
-      context.commit('isAuthenticated', isAuth);
-    },
-    getUserData(context, userData) {
+    getLatestLessonsOfUser(context) {
       return new Promise((resolve, reject) => {
-        Vue.prototype.$auth.getUser()
+        var requestBody = { 'email': this.state.userData.email };
+        axios.post('https://heroku-popup-chinese-backend.herokuapp.com/getUserLessonsByUserEmail', requestBody)
           .then(response => {
-            context.commit('setUserData', response);
+            context.commit('setLatestLessonsOfUser', response);
             resolve(response);
-          }, error => {
+          })
+          .catch(error => {
+            console.error('Error getting latest lessons ' + error);
             reject(error);
           });
       });

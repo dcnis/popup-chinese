@@ -70,8 +70,8 @@
 
     <v-app-bar color="#86E0C8" dark fixed app>
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-      <v-btn outlined right fixed  v-if="isLoggedIn" v-on:click="logout" id="logout-button"> {{buttonText}} </v-btn>
-      <v-btn outlined right fixed v-else v-on:click="login" id="login-button"> {{buttonText}} </v-btn>
+      <v-btn outlined right fixed v-if="authenticated" v-on:click="logout" id="logout-button"> Logout </v-btn>
+      <v-btn outlined right fixed v-else v-on:click="login" id="login-button"> Login </v-btn>
     </v-app-bar>
     <v-content>
       <v-container fluid>
@@ -91,42 +91,32 @@ export default {
   },
   data() {
     return {
-      drawer: null
+      drawer: null,
+      authenticated: false
     };
   },
-  updated() {
+  created() {
     this.isAuthenticated();
-    this.getUserData();
   },
   methods: {
-    async isAuthenticated() {
-      this.$store.dispatch('isAuthenticated', await this.$auth.isAuthenticated());
-    },
     login() {
       this.$auth.loginRedirect('/');
     },
+    async isAuthenticated() {
+      this.authenticated = await this.$auth.isAuthenticated();
+    },
     async logout() {
       await this.$auth.logout();
-      await this.isAuthenticated();
-      this.$store.dispatch('deleteUserData');
-
-      this.$router.push('/');
+      await this.$auth.isAuthenticated();
+      this.$router.push({ path: '/' });
     },
-    getUserData() {
-      this.$store.dispatch('getUserData')
-        .then(response => {
-        }, error => {
-          console.error('error ', error);
-        });
+    async getUserData() {
+      await this.$store.dispatch('getUserData');
     }
   },
-  computed: {
-    buttonText() {
-      return (this.$store.state.isAuthenticated ? 'Logout' : 'Login');
-    },
-    isLoggedIn() {
-      return this.$store.state.isAuthenticated;
-    }
+  watch: {
+    // Everytime the route changes, check for auth status
+    '$route': 'isAuthenticated'
   }
 };
 </script>

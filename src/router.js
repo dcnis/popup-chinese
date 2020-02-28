@@ -23,13 +23,18 @@ Vue.use(Auth, {
   pkce: true
 });
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
-    { path: '/', component: Home },
+    { path: '/',
+      component: Home },
     { path: '/implicit/callback', component: Auth.handleCallback() },
-    { path: '/favorites', component: Favorites },
+    { path: '/favorites',
+      component: Favorites,
+      meta: {
+        requiresAuth: true
+      } },
     { path: '/about', component: About },
     { path: '/lessons-absolute-beginners', component: AbsoluteBeginners },
     { path: '/lessons-elementary', component: Elementary },
@@ -46,3 +51,7 @@ export default new Router({
       ] }
   ]
 });
+
+router.beforeEach(Vue.prototype.$auth.authRedirectGuard());
+
+export default router;
