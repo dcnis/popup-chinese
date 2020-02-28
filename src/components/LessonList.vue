@@ -1,13 +1,11 @@
 <template>
   <div>
-    <div v-if="loading">Loading..</div>
     <v-list two-line>
-      <template v-for="lesson in lessons">
+      <template v-for="lesson in getLessons">
         <v-list-item :key="lesson.id" thumbnail :to="'/lesson/' + lesson.id">
           <v-list-item-avatar>
             <img :src="lesson.thumbnail">
           </v-list-item-avatar>
-
           <v-list-item-content>
             <v-list-item-title v-html="lesson.title"></v-list-item-title>
             <v-list-item-subtitle v-html="lesson.difficulty.description"></v-list-item-subtitle>
@@ -19,7 +17,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 
 export default {
   props: {
@@ -27,21 +24,16 @@ export default {
   },
   data() {
     return {
-      lessons: [],
       loading: true
     };
   },
-  async created() {
-    axios.defaults.headers.common['Authorization'] = `Bearer ${await this.$auth.getAccessToken()}`;
-    const searchedLevel = {
-      difficulty: this.level
-    };
-    axios.post('https://heroku-popup-chinese-backend.herokuapp.com/findLessonsByDifficulty', searchedLevel)
-      .then(res => {
-        this.lessons = res.data;
-      })
-      .catch(err => console.log(err))
-      .finally(() => (this.loading = false));
+  created() {
+    this.$store.dispatch('fetchLessonsByDiffculty', this.level);
+  },
+  computed: {
+    getLessons() {
+      return this.$store.state.lessonsByDifficulty;
+    }
   }
 };
 </script>

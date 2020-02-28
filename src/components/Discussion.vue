@@ -12,9 +12,6 @@ export default {
     return {
       currentLesson: null
     };
-  },
-  created() {
-    console.log('lesson ' + JSON.stringify(this.lesson));
   }
 };
 </script>
