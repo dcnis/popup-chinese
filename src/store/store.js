@@ -12,7 +12,8 @@ export default new Vuex.Store({
   state: {
     lessons: [],
     latestLessons: [],
-    authenticated: false
+    authenticated: false,
+    user: {}
   },
   getters: {
     getAuthenticationState: (state) => state.isAuthenticated
@@ -24,7 +25,7 @@ export default new Vuex.Store({
         .map(lesson => (lesson.lastTimeWatched = new Date().toISOString()));
     },
     deleteUserData(state) {
-      state.userData = null;
+      state.user = {};
     },
     setLatestLessonsOfUser(state, latestLessons) {
       state.latestLessons = latestLessons;
@@ -32,6 +33,9 @@ export default new Vuex.Store({
     },
     fetchAuthentication(state, authStatus) {
       state.authenticated = authStatus;
+    },
+    setUserData(state, user) {
+      state.user = user;
     }
   },
   actions: {
@@ -55,8 +59,14 @@ export default new Vuex.Store({
     deleteUserData(context) {
       context.commit('deleteUserData');
     },
-    fetchAuthentication(context, authStatus) {
+    async fetchAuthentication(context, authStatus) {
       context.commit('fetchAuthentication', authStatus);
+      if (authStatus) {
+        var response = await Vue.prototype.$auth.getUser();
+        context.commit('setUserData', response);
+      } else {
+        context.commit('deleteUserData');
+      }
     }
   }
 });
