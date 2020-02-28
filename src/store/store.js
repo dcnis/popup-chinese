@@ -5,7 +5,7 @@ import userdata from './modules/userdata';
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   modules: {
     userdata
   },
@@ -26,10 +26,10 @@ export default new Vuex.Store({
     },
     deleteUserData(state) {
       state.user = {};
+      state.latestLessons = {};
     },
     setLatestLessonsOfUser(state, latestLessons) {
       state.latestLessons = latestLessons;
-      Vue.nextTick();
     },
     fetchAuthentication(state, authStatus) {
       state.authenticated = authStatus;
@@ -42,19 +42,11 @@ export default new Vuex.Store({
     updateTimestamp(context, lessonId) {
       context.commit('updateTimestamp', lessonId);
     },
-    getLatestLessonsOfUser(context) {
-      return new Promise((resolve, reject) => {
-        var requestBody = { 'email': this.state.userData.email };
-        axios.post('https://heroku-popup-chinese-backend.herokuapp.com/getUserLessonsByUserEmail', requestBody)
-          .then(response => {
-            context.commit('setLatestLessonsOfUser', response);
-            resolve(response);
-          })
-          .catch(error => {
-            console.error('Error getting latest lessons ' + error);
-            reject(error);
-          });
-      });
+    async getLatestLessonsOfUser(context) {
+      var requestBody = { 'email': this.state.user.email };
+      axios.defaults.headers.common['Authorization'] = `Bearer ${await Vue.prototype.$auth.getAccessToken()}`;
+      var response = await axios.post('https://heroku-popup-chinese-backend.herokuapp.com/getUserLessonsByUserEmail', requestBody);
+      context.commit('setLatestLessonsOfUser', response);
     },
     deleteUserData(context) {
       context.commit('deleteUserData');
@@ -64,9 +56,12 @@ export default new Vuex.Store({
       if (authStatus) {
         var response = await Vue.prototype.$auth.getUser();
         context.commit('setUserData', response);
+        store.dispatch('getLatestLessonsOfUser');
       } else {
         context.commit('deleteUserData');
       }
     }
   }
 });
+
+export default store;

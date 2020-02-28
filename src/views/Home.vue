@@ -8,18 +8,17 @@
 
     <div v-if="isLoggedIn">
     <h2>Latest lessons</h2>
+
     <v-list two-line>
-      <template v-for="entry in latestLessons">
-        <v-list-item :key="entry.id" thumbnail :to="'/lesson/' + entry.lessonId">
-          <v-list-item-avatar>
-            <!-- <img :src="entry.lesson.thumbnail"> -->
-          </v-list-item-avatar>
+      <template v-for="entry in usersLatestLessons.data">
+        <v-list-item :key="entry.id" :to="'/lesson/' + entry.lessonId">
+          <!-- <v-list-item-avatar>
+            <img :src="entry.lesson.thumbnail">
+          </v-list-item-avatar> -->
 
           <v-list-item-content>
             <v-list-item-title>LessonId: {{entry.lessonId}}<br>
             Last seen: {{entry.lastSeen}}</v-list-item-title>
-            <!-- <v-list-item-title v-html="entry.lesson.title"></!--> -->
-            <!-- <v-list-item-sub-title v-html="entry.lesson.level"></v-list-item-sub-title> -->
           </v-list-item-content>
         </v-list-item>
       </template>
@@ -50,6 +49,9 @@ export default {
     },
     userdata() {
       return this.$store.state.user;
+    },
+    usersLatestLessons() {
+      return this.$store.state.latestLessons;
     }
   }
 };
