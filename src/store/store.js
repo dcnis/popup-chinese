@@ -26,7 +26,7 @@ const store = new Vuex.Store({
     },
     deleteUserData(state) {
       state.user = {};
-      state.latestLessons = {};
+      state.latestLessons = [];
     },
     setLatestLessonsOfUser(state, latestLessons) {
       state.latestLessons = latestLessons;
@@ -39,6 +39,13 @@ const store = new Vuex.Store({
     },
     setLessonsByDiffculty(state, lessons) {
       state.lessonsByDifficulty = lessons;
+    },
+    updateLessonTimestamp(state, lessonId) {
+      state.latestLessons.data
+        .filter(lesson => lesson.id === lessonId)
+        .map(lesson => (lesson.lastSeen = new Date().toISOString()));
+
+      console.log('after ' + state.latestLessons);
     }
   },
   actions: {
@@ -50,6 +57,11 @@ const store = new Vuex.Store({
       axios.defaults.headers.common['Authorization'] = `Bearer ${await Vue.prototype.$auth.getAccessToken()}`;
       var response = await axios.post('https://heroku-popup-chinese-backend.herokuapp.com/getUserLessonsByUserEmail', requestBody);
       context.commit('setLatestLessonsOfUser', response);
+    },
+    updateLessonTimestamp(context, lessonId) {
+      // send post request and update in db
+
+      context.commit('updateLessonTimestamp', lessonId);
     },
     deleteUserData(context) {
       context.commit('deleteUserData');

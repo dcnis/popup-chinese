@@ -35,8 +35,6 @@ export default {
       latestLessons: {}
     };
   },
-  created() {
-  },
   methods: {
     async getUserdata() {
       await this.$store.dispatch('getUserData');

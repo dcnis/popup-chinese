@@ -111,10 +111,6 @@ export default {
       this.$router.push({ path: './' });
     }
   },
-  watch: {
-    // Everytime the route changes, check for auth status
-    '$route': 'isAuthenticated'
-  },
   computed: {
     isLoggedIn() {
       return this.$store.state.authenticated;

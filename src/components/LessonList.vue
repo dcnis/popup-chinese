@@ -2,7 +2,7 @@
   <div>
     <v-list two-line>
       <template v-for="lesson in getLessons">
-        <v-list-item :key="lesson.id" thumbnail :to="'/lesson/' + lesson.id">
+        <v-list-item :key="lesson.id" :to="'/lesson/' + lesson.id" v-on:click.native="updateLastSeen(lesson.id)">
           <v-list-item-avatar>
             <img :src="lesson.thumbnail">
           </v-list-item-avatar>
@@ -26,6 +26,13 @@ export default {
     return {
       loading: true
     };
+  },
+  methods: {
+    updateLastSeen(lessonId) {
+      // check if user is authenticated
+
+      this.$store.dispatch('updateLessonTimestamp', lessonId);
+    }
   },
   created() {
     this.$store.dispatch('fetchLessonsByDiffculty', this.level);
