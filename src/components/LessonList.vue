@@ -29,9 +29,9 @@ export default {
   },
   methods: {
     updateLastSeen(lessonId) {
-      // check if user is authenticated
-
-      this.$store.dispatch('updateLessonTimestamp', lessonId);
+      if (this.$store.state.authenticated) {
+        this.$store.dispatch('updateLessonTimestamp', lessonId);
+      }
     }
   },
   created() {

@@ -99,8 +99,8 @@ export default {
     this.isAuthenticated();
   },
   methods: {
-    login() {
-      this.$auth.loginRedirect('/');
+    async login() {
+      await this.$auth.loginRedirect('/');
     },
     async isAuthenticated() {
       this.$store.dispatch('fetchAuthentication', await this.$auth.isAuthenticated());
@@ -115,6 +115,10 @@ export default {
     isLoggedIn() {
       return this.$store.state.authenticated;
     }
+  },
+  watch: {
+    // Everytime the route changes, check for auth status
+    '$route': 'isAuthenticated'
   }
 };
 </script>

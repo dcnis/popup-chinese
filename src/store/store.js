@@ -41,11 +41,11 @@ const store = new Vuex.Store({
       state.lessonsByDifficulty = lessons;
     },
     updateLessonTimestamp(state, lessonId) {
-      state.latestLessons.data
-        .filter(lesson => lesson.id === lessonId)
-        .map(lesson => (lesson.lastSeen = new Date().toISOString()));
-
-      console.log('after ' + state.latestLessons);
+      if (state.latestLessons.data) {
+        state.latestLessons.data
+          .filter(lesson => lesson.id === lessonId)
+          .map(lesson => (lesson.lastSeen = new Date().toISOString()));
+      }
     }
   },
   actions: {
