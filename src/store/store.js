@@ -71,14 +71,21 @@ const store = new Vuex.Store({
         lastSeen: newTimestamp,
         email: this.state.user.email
       };
-      axios.post('https://heroku-popup-chinese-backend.herokuapp.com/updateLessonTimestamp', body)
-        .then(response => {
-          console.log(response);
-        })
-        .catch(error => console.log(error));
 
-      // update state
-      context.commit('setLessonTimestamp', lessonId, newTimestamp);
+      return new Promise((resolve, reject) => {
+        axios.post('https://heroku-popup-chinese-backend.herokuapp.com/updateLessonTimestamp', body)
+          .then(response => {
+            // update state if there was a DB UPDATE row
+            if (response === 1) {
+              context.commit('setLessonTimestamp', lessonId, newTimestamp);
+            }
+            resolve(response);
+          })
+          .catch(error => {
+            console.log(error);
+            reject(error);
+          });
+      });
     },
     deleteUserData(context) {
       context.commit('deleteUserData');
@@ -99,11 +106,7 @@ const store = new Vuex.Store({
       const searchedLevel = {
         difficulty: level
       };
-      axios
-        .post(
-          'https://heroku-popup-chinese-backend.herokuapp.com/findLessonsByDifficulty',
-          searchedLevel
-        )
+      axios.post('https://heroku-popup-chinese-backend.herokuapp.com/findLessonsByDifficulty', searchedLevel)
         .then(res => {
           context.commit('setLessonsByDiffculty', res.data);
         })

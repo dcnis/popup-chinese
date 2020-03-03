@@ -30,7 +30,15 @@ export default {
   methods: {
     updateLastSeen(lessonId) {
       if (this.$store.state.authenticated) {
-        this.$store.dispatch('updateLessonTimestamp', lessonId);
+        this.$store.dispatch('updateLessonTimestamp', lessonId)
+          .then(response => {
+            if (response === 0) {
+              // there was no matching lesson in latestUserLessons
+              // therefore add Lesson to latestUserLessons
+              
+            }
+          })
+          .catch(error => console.log(error));
       }
     }
   },
