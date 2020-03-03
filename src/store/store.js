@@ -16,7 +16,7 @@ const store = new Vuex.Store({
     user: null
   },
   getters: {
-    getAuthenticationState: (state) => state.isAuthenticated
+    getAuthenticationState: state => state.isAuthenticated
   },
   mutations: {
     updateTimestamp(state, lessonId) {
@@ -40,11 +40,11 @@ const store = new Vuex.Store({
     setLessonsByDiffculty(state, lessons) {
       state.lessonsByDifficulty = lessons;
     },
-    updateLessonTimestamp(state, lessonId) {
+    setLessonTimestamp(state, lessonId, newTimestamp) {
       if (state.latestLessons.data) {
         state.latestLessons.data
           .filter(lesson => lesson.id === lessonId)
-          .map(lesson => (lesson.lastSeen = new Date().toISOString()));
+          .map(lesson => (lesson.lastSeen = newTimestamp));
       }
     }
   },
@@ -53,15 +53,32 @@ const store = new Vuex.Store({
       context.commit('updateTimestamp', lessonId);
     },
     async getLatestLessonsOfUser(context) {
-      var requestBody = { 'email': this.state.user.email };
+      var requestBody = { email: this.state.user.email };
       axios.defaults.headers.common['Authorization'] = `Bearer ${await Vue.prototype.$auth.getAccessToken()}`;
-      var response = await axios.post('https://heroku-popup-chinese-backend.herokuapp.com/getUserLessonsByUserEmail', requestBody);
+      var response = await axios.post(
+        'https://heroku-popup-chinese-backend.herokuapp.com/getUserLessonsByUserEmail',
+        requestBody
+      );
       context.commit('setLatestLessonsOfUser', response);
     },
     updateLessonTimestamp(context, lessonId) {
-      // send post request and update in db
+      // set new Date
+      var newTimestamp = new Date().toISOString();
 
-      context.commit('updateLessonTimestamp', lessonId);
+      // make post request to DB
+      var body = {
+        lessonId: lessonId,
+        lastSeen: newTimestamp,
+        email: this.state.user.email
+      };
+      axios.post('https://heroku-popup-chinese-backend.herokuapp.com/updateLessonTimestamp', body)
+        .then(response => {
+          console.log(response);
+        })
+        .catch(error => console.log(error));
+
+      // update state
+      context.commit('setLessonTimestamp', lessonId, newTimestamp);
     },
     deleteUserData(context) {
       context.commit('deleteUserData');
@@ -82,7 +99,11 @@ const store = new Vuex.Store({
       const searchedLevel = {
         difficulty: level
       };
-      axios.post('https://heroku-popup-chinese-backend.herokuapp.com/findLessonsByDifficulty', searchedLevel)
+      axios
+        .post(
+          'https://heroku-popup-chinese-backend.herokuapp.com/findLessonsByDifficulty',
+          searchedLevel
+        )
         .then(res => {
           context.commit('setLessonsByDiffculty', res.data);
         })
