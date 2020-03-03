@@ -109,6 +109,7 @@ export default {
       await this.$auth.logout();
       await this.isAuthenticated();
       this.$router.push({ path: './' });
+      this.$store.dispatch('deleteUserData');
     }
   },
   computed: {

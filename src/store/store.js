@@ -13,7 +13,7 @@ const store = new Vuex.Store({
     lessonsByDifficulty: [],
     latestLessons: [],
     authenticated: false,
-    user: {}
+    user: null
   },
   getters: {
     getAuthenticationState: (state) => state.isAuthenticated
@@ -31,7 +31,7 @@ const store = new Vuex.Store({
     setLatestLessonsOfUser(state, latestLessons) {
       state.latestLessons = latestLessons;
     },
-    fetchAuthentication(state, authStatus) {
+    setAuthentication(state, authStatus) {
       state.authenticated = authStatus;
     },
     setUserData(state, user) {
@@ -66,15 +66,16 @@ const store = new Vuex.Store({
     deleteUserData(context) {
       context.commit('deleteUserData');
     },
-    async fetchAuthentication(context, authStatus) {
-      context.commit('fetchAuthentication', authStatus);
-      if (authStatus) {
-        var response = await Vue.prototype.$auth.getUser();
-        context.commit('setUserData', response);
-        store.dispatch('getLatestLessonsOfUser');
-      } else {
-        context.commit('deleteUserData');
+    fetchAuthentication(context, authStatus) {
+      context.commit('setAuthentication', authStatus);
+      if (authStatus && !this.state.user) {
+        store.dispatch('getUserdata');
       }
+    },
+    async getUserdata(context) {
+      var response = await Vue.prototype.$auth.getUser();
+      context.commit('setUserData', response);
+      store.dispatch('getLatestLessonsOfUser');
     },
     async fetchLessonsByDiffculty(context, level) {
       axios.defaults.headers.common['Authorization'] = `Bearer ${await Vue.prototype.$auth.getAccessToken()}`;
