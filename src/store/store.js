@@ -31,6 +31,9 @@ const store = new Vuex.Store({
     setLatestLessonsOfUser(state, latestLessons) {
       state.latestLessons = latestLessons;
     },
+    addNewLessonToLatestLessonsOfUser(state, lessonId) {
+
+    },
     setAuthentication(state, authStatus) {
       state.authenticated = authStatus;
     },
@@ -49,9 +52,6 @@ const store = new Vuex.Store({
     }
   },
   actions: {
-    updateTimestamp(context, lessonId) {
-      context.commit('updateTimestamp', lessonId);
-    },
     async getLatestLessonsOfUser(context) {
       var requestBody = { email: this.state.user.email };
       axios.defaults.headers.common['Authorization'] = `Bearer ${await Vue.prototype.$auth.getAccessToken()}`;
@@ -60,6 +60,19 @@ const store = new Vuex.Store({
         requestBody
       );
       context.commit('setLatestLessonsOfUser', response);
+    },
+    addLatestLessonsOfUser(context, lessonId) {
+      // make POST request to DB
+      var newDate = new Date().toISOString();
+
+      var url = 'https://heroku-popup-chinese-backend.herokuapp.com/addLatestLessonsOfUser?' +
+        'email=' + this.state.user.email +
+        '&lessonId=' + lessonId +
+        '&lastSeen=' + newDate;
+
+      axios.post(url).catch(error => console.log(error));
+
+      // add lesson to state (I think I dont need it because it will get fetched anyways)
     },
     updateLessonTimestamp(context, lessonId) {
       // set new Date

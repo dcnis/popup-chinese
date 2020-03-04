@@ -32,10 +32,10 @@ export default {
       if (this.$store.state.authenticated) {
         this.$store.dispatch('updateLessonTimestamp', lessonId)
           .then(response => {
-            if (response === 0) {
-              // there was no matching lesson in latestUserLessons
-              // therefore add Lesson to latestUserLessons
-              
+            if (response.data === 0) {
+              // there was no matching lesson in latestLessonsOfUser
+              // therefore add lesson to latestLessonsOfUser
+              this.$store.dispatch('addLatestLessonsOfUser', lessonId);
             }
           })
           .catch(error => console.log(error));
