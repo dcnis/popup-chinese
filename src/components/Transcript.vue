@@ -2,7 +2,7 @@
     <div>
         <div v-if="loading">Loading..</div>
         <div v-else>
-        <v-simple-table :light="true">
+        <v-simple-table :light="false">
         <template v-slot:default>
           <thead>
             <tr>
@@ -64,7 +64,7 @@ table{
     font-size: 20px;
 }
 th {
-  background-color: #42b983;
+  background-color: #F5F5F5;
   color: rgba(255,255,255,0.66);
   cursor: pointer;
   -webkit-user-select: none;
