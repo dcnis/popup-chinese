@@ -1,9 +1,6 @@
 import store from '../../store/store';
 
-export const latestLessons = {
-  data() {
-
-  },
+export const latestLessonMixin = {
   methods: {
     updateAll(lessonId) {
       if (store.state.authenticated) {

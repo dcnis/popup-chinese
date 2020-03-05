@@ -11,7 +11,7 @@
 
     <v-list two-line>
       <template v-for="entry in usersLatestLessons">
-        <v-list-item :key="entry.id" :to="'/lesson/' + entry.lessonId.id">
+        <v-list-item :key="entry.id" :to="'/lesson/' + entry.lessonId.id" @click.native="updateLatestLessons(entry.lessonId.id)">
           <v-list-item-avatar>
             <img :src="entry.lessonId.thumbnail">
           </v-list-item-avatar>
@@ -27,8 +27,10 @@
 </template>
 
 <script>
+import { latestLessonMixin } from '../components/mixins/latestLessonMixin';
 
 export default {
+  mixins: [latestLessonMixin],
   data() {
     return {
       latestLessons: {}
@@ -37,6 +39,11 @@ export default {
   created() {
     if (this.$store.state.authenticated) {
       this.$store.dispatch('getUserdata');
+    }
+  },
+  methods: {
+    updateLatestLessons(lessonId) {
+      latestLessonMixin.methods.updateAll(lessonId);
     }
   },
   computed: {

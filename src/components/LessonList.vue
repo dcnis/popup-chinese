@@ -17,10 +17,10 @@
 </template>
 
 <script>
-import { latestLessons } from './mixins/latestLessons';
+import { latestLessonMixin } from './mixins/latestLessonMixin';
 
 export default {
-  mixins: [latestLessons],
+  mixins: [latestLessonMixin],
   props: {
     level: Number
   },
@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     updateLastSeen(lessonId) {
-      latestLessons.methods.updateAll(lessonId);
+      latestLessonMixin.methods.updateAll(lessonId);
     }
   },
   created() {
