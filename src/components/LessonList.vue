@@ -17,8 +17,10 @@
 </template>
 
 <script>
+import { latestLessons } from './mixins/latestLessons';
 
 export default {
+  mixins: [latestLessons],
   props: {
     level: Number
   },
@@ -29,17 +31,7 @@ export default {
   },
   methods: {
     updateLastSeen(lessonId) {
-      if (this.$store.state.authenticated) {
-        this.$store.dispatch('updateLessonTimestamp', lessonId)
-          .then(response => {
-            if (response.data === 0) {
-              // there was no matching lesson in latestLessonsOfUser
-              // therefore add lesson to latestLessonsOfUser
-              this.$store.dispatch('addLatestLessonsOfUser', lessonId);
-            }
-          })
-          .catch(error => console.log(error));
-      }
+      latestLessons.methods.updateAll(lessonId);
     }
   },
   created() {
