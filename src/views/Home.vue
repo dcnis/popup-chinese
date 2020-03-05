@@ -10,7 +10,7 @@
     <h2>Your last lessons</h2>
 
     <v-list two-line>
-      <template v-for="entry in usersLatestLessons.data">
+      <template v-for="entry in usersLatestLessons">
         <v-list-item :key="entry.id" :to="'/lesson/' + entry.lessonId.id">
           <v-list-item-avatar>
             <img :src="entry.lessonId.thumbnail">

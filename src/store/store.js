@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
 import userdata from './modules/userdata';
+import constants from '../config/constants';
 
 Vue.use(Vuex);
 
@@ -44,8 +45,8 @@ const store = new Vuex.Store({
       state.lessonsByDifficulty = lessons;
     },
     setLessonTimestamp(state, lessonId, newTimestamp) {
-      if (state.latestLessons.data) {
-        state.latestLessons.data
+      if (state.latestLessons) {
+        state.latestLessons
           .filter(lesson => lesson.id === lessonId)
           .map(lesson => (lesson.lastSeen = newTimestamp));
       }
@@ -53,20 +54,20 @@ const store = new Vuex.Store({
   },
   actions: {
     async getLatestLessonsOfUser(context) {
-      var requestBody = { email: this.state.user.email };
+      var requestBody = { email: this.state.user.email, limit: 5 };
       axios.defaults.headers.common['Authorization'] = `Bearer ${await Vue.prototype.$auth.getAccessToken()}`;
       var response = await axios.post(
-        'https://heroku-popup-chinese-backend.herokuapp.com/getUserLessonsByUserEmail',
+        constants.GET_USER_LESSON_BY_USER_EMAIL,
         requestBody
       );
-      context.commit('setLatestLessonsOfUser', response);
+      context.commit('setLatestLessonsOfUser', response.data.content);
     },
     addLatestLessonsOfUser(context, lessonId) {
       // make POST request to DB
       var newDate = new Date().toISOString();
 
-      var url = 'https://heroku-popup-chinese-backend.herokuapp.com/addLatestLessonsOfUser?' +
-        'email=' + this.state.user.email +
+      var url = constants.ADD_LATEST_LESSON_OF_USER +
+        '?email=' + this.state.user.email +
         '&lessonId=' + lessonId +
         '&lastSeen=' + newDate;
 
@@ -86,7 +87,7 @@ const store = new Vuex.Store({
       };
 
       return new Promise((resolve, reject) => {
-        axios.post('https://heroku-popup-chinese-backend.herokuapp.com/updateLessonTimestamp', body)
+        axios.post(constants.UPDATE_LESSON_TIMESTAMP, body)
           .then(response => {
             // update state if there was a DB UPDATE row
             if (response === 1) {
@@ -119,7 +120,7 @@ const store = new Vuex.Store({
       const searchedLevel = {
         difficulty: level
       };
-      axios.post('https://heroku-popup-chinese-backend.herokuapp.com/findLessonsByDifficulty', searchedLevel)
+      axios.post(constants.FIND_LESSONS_BY_DIFFICULTY, searchedLevel)
         .then(res => {
           context.commit('setLessonsByDiffculty', res.data);
         })
