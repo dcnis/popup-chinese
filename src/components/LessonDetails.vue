@@ -8,7 +8,7 @@
     <v-container>
     <v-layout justify-end>
         <v-btn text icon color="pink" v-on:click="toggleLike">
-          <v-icon v-bind:disabled="!liked">mdi-heart</v-icon>
+          <v-icon v-bind:disabled="!(userLesson.liked)">mdi-heart</v-icon>
         </v-btn>
     </v-layout>
     </v-container>
@@ -35,6 +35,7 @@
 <script>
 import VuetifyAudio from 'vuetify-audio';
 import axios from 'axios';
+import constants from '../config/constants';
 
 export default {
   props: ['id'],
@@ -44,7 +45,7 @@ export default {
       e31: true,
       file: 'http://popupchinese.com/data/1390/audio.mp3',
       currentLesson: {},
-      liked: false,
+      userLesson: {},
       loading: true
     };
   },
@@ -53,25 +54,49 @@ export default {
   },
   methods: {
     toggleLike() {
-      if (this.liked) {
-        this.unlikeLesson();
+      if (this.$store.state.authenticated) {
+        if (this.userLesson.liked) {
+          this.unlikeLesson();
+        } else {
+          this.likeLesson();
+        }
       } else {
-        this.likeLesson();
+        // forward to login-page
       }
     },
     likeLesson() {
-      this.liked = true;
+      this.userLesson.liked = true;
+      // send post request to like lesson in userLessons
+      
     },
     unlikeLesson() {
-      this.liked = false;
+      this.userLesson.liked = false;
+      // send post request to unlike lesson userLesson
+      
     },
     audioFinish() {
     }
   },
   created() {
-    axios.get('https://heroku-popup-chinese-backend.herokuapp.com/getLesson/' + this.id)
+    axios.get(constants.GET_LESSON + this.id)
       .then(response => {
         this.currentLesson = response.data;
+        if (this.$store.state.authenticated) {
+        // get matching userLesson
+          var body = {
+            email: this.$store.state.user.email,
+            lessonId: this.id
+          };
+          axios.post(constants.GET_SINGLE_USER_LESSON, body)
+            .then(response => {
+              // set userLesson
+              this.userLesson = response.data;
+            })
+            .catch(error => {
+            // if no matching userLesson found (something is wrong)
+              console.log(error);
+            });
+        }
       })
       .catch(err => console.log('Error: ' + err))
       .finally(() => (this.loading = false));
