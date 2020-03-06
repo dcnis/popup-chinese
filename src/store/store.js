@@ -80,14 +80,14 @@ const store = new Vuex.Store({
       var newTimestamp = new Date().toISOString();
 
       // make post request to DB
-      var body = {
+      var bodyWithTimestamp = {
         lessonId: lessonId,
         lastSeen: newTimestamp,
         email: this.state.user.email
       };
 
       return new Promise((resolve, reject) => {
-        axios.post(constants.UPDATE_LESSON_TIMESTAMP, body)
+        axios.post(constants.UPDATE_USER_LESSON, bodyWithTimestamp)
           .then(response => {
             // update state if there was a DB UPDATE row
             if (response === 1) {
