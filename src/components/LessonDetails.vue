@@ -67,39 +67,43 @@ export default {
     likeLesson() {
       this.userLesson.liked = true;
       // send post request to like lesson in userLessons
-      
     },
     unlikeLesson() {
       this.userLesson.liked = false;
       // send post request to unlike lesson userLesson
-      
     },
     audioFinish() {
+    },
+    getLesson() {
+      axios.get(constants.GET_LESSON + this.id)
+        .then(response => {
+          // set current lesson
+          this.currentLesson = response.data;
+          if (this.$store.state.authenticated) {
+            this.getMatchingUserLesson();
+          }
+        })
+        .catch(err => console.log('Error: ' + err))
+        .finally(() => (this.loading = false));
+    },
+    getMatchingUserLesson() {
+      var body = {
+        email: this.$store.state.user.email,
+        lessonId: this.id
+      };
+      axios.post(constants.GET_SINGLE_USER_LESSON, body)
+        .then(response => {
+          // set userLesson
+          this.userLesson = response.data;
+        })
+        .catch(error => {
+          // if no matching userLesson found (something is wrong)
+          console.log(error);
+        });
     }
   },
   created() {
-    axios.get(constants.GET_LESSON + this.id)
-      .then(response => {
-        this.currentLesson = response.data;
-        if (this.$store.state.authenticated) {
-        // get matching userLesson
-          var body = {
-            email: this.$store.state.user.email,
-            lessonId: this.id
-          };
-          axios.post(constants.GET_SINGLE_USER_LESSON, body)
-            .then(response => {
-              // set userLesson
-              this.userLesson = response.data;
-            })
-            .catch(error => {
-            // if no matching userLesson found (something is wrong)
-              console.log(error);
-            });
-        }
-      })
-      .catch(err => console.log('Error: ' + err))
-      .finally(() => (this.loading = false));
+    this.getLesson();
   }
 };
 </script>
