@@ -2,5 +2,6 @@ This is the backlog of features. Here you will find potential features, that wil
 
 
 FEATURE-REQUEST:
+0. Get favorite userLessons
 1. In view 'Transcript' make it possible to show/hide pinyin, english.
 2. Make a custom login-page

@@ -36,8 +36,10 @@
 import VuetifyAudio from 'vuetify-audio';
 import axios from 'axios';
 import constants from '../config/constants';
+import updateLikeMixin from './mixins/updateLikeMixin';
 
 export default {
+  mixins: [updateLikeMixin],
   props: ['id'],
   data() {
     return {
@@ -66,11 +68,11 @@ export default {
     },
     likeLesson() {
       this.userLesson.liked = true;
-      // send post request to like lesson in userLessons
+      updateLikeMixin.methods.updateUserLessonInDatabase(this.id, true);
     },
     unlikeLesson() {
       this.userLesson.liked = false;
-      // send post request to unlike lesson userLesson
+      updateLikeMixin.methods.updateUserLessonInDatabase(this.id, false);
     },
     audioFinish() {
     },
