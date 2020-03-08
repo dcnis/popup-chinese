@@ -63,7 +63,7 @@ export default {
           this.likeLesson();
         }
       } else {
-        // forward to login-page
+        this.redirectLogin();
       }
     },
     likeLesson() {
@@ -73,6 +73,9 @@ export default {
     unlikeLesson() {
       this.userLesson.liked = false;
       updateLikeMixin.methods.updateUserLessonInDatabase(this.id, false);
+    },
+    async redirectLogin() {
+      await this.$auth.loginRedirect(this.$router.currentRoute.path);
     },
     audioFinish() {
     },

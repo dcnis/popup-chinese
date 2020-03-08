@@ -5,3 +5,7 @@ FEATURE-REQUEST:
 0. Get favorite userLessons
 1. In view 'Transcript' make it possible to show/hide pinyin, english.
 2. Make a custom login-page
+
+
+BUG:
+- What happens if lesson is not in userLessons

@@ -40,7 +40,7 @@ const router = new Router({
     { path: '/lessons-elementary', component: Elementary },
     { path: '/lessons-intermediate', component: Intermediate },
     { path: '/lessons-advanced', component: Advanced },
-    { path: '/login', component: Login },
+    { path: '/login', name: 'login', component: Login },
     { path: '/lesson/:id',
       component: LessonDetails,
       props: true,
