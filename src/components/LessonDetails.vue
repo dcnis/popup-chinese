@@ -75,7 +75,7 @@ export default {
       updateLikeMixin.methods.updateUserLessonInDatabase(this.id, false);
     },
     async redirectLogin() {
-      await this.$auth.loginRedirect(this.$router.currentRoute.path);
+      await this.$auth.loginRedirect('/');
     },
     audioFinish() {
     },

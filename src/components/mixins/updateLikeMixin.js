@@ -4,7 +4,7 @@ import store from '../../store/store';
 
 export default {
   methods: {
-    updateUserLessonInDatabase(lessonId, liked) {
+    async updateUserLessonInDatabase(lessonId, liked) {
       let bodyWithLike = {
         email: store.state.user.email,
         lessonId: lessonId,
@@ -12,9 +12,7 @@ export default {
       };
 
       axios.post(constants.UPDATE_USER_LESSON, bodyWithLike)
-        .then(response => {
-          console.log('affectedRows: ' + response.data);
-        })
+        .then()
         .catch(error => console.log(error));
     }
   }
