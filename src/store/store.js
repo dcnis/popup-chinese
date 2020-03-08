@@ -14,7 +14,8 @@ const store = new Vuex.Store({
     lessonsByDifficulty: [],
     latestLessons: [],
     authenticated: false,
-    user: null
+    user: null,
+    likedUserLessons: []
   },
   getters: {
     getAuthenticationState: state => state.isAuthenticated
@@ -27,6 +28,7 @@ const store = new Vuex.Store({
     },
     deleteUserData(state) {
       state.user = {};
+      state.latestLessons = [];
       state.latestLessons = [];
     },
     setLatestLessonsOfUser(state, latestLessons) {
@@ -50,6 +52,9 @@ const store = new Vuex.Store({
           .filter(lesson => lesson.id === lessonId)
           .map(lesson => (lesson.lastSeen = newTimestamp));
       }
+    },
+    setLikedUserLessons(state, likedUserLessons) {
+      state.likedUserLessons = likedUserLessons;
     }
   },
   actions: {
@@ -57,7 +62,7 @@ const store = new Vuex.Store({
       var requestBody = { email: this.state.user.email, limit: 5 };
       axios.defaults.headers.common['Authorization'] = `Bearer ${await Vue.prototype.$auth.getAccessToken()}`;
       var response = await axios.post(
-        constants.GET_USER_LESSON_BY_USER_EMAIL,
+        constants.GET_USER_LESSONS,
         requestBody
       );
       context.commit('setLatestLessonsOfUser', response.data.content);
@@ -123,6 +128,20 @@ const store = new Vuex.Store({
       axios.post(constants.FIND_LESSONS_BY_DIFFICULTY, searchedLevel)
         .then(res => {
           context.commit('setLessonsByDiffculty', res.data);
+        })
+        .catch(err => console.log(err));
+    },
+    async getLikedUserLessons(context) {
+      var user = await Vue.prototype.$auth.getUser();
+
+      var body = {
+        email: user.email,
+        liked: true
+      };
+
+      axios.post(constants.GET_USER_LESSONS, body)
+        .then(response => {
+          context.commit('setLikedUserLessons', response.data.content);
         })
         .catch(err => console.log(err));
     }

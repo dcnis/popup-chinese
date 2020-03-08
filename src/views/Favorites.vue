@@ -1,17 +1,16 @@
 <template>
   <div>
-    <h1>Your favorite lessons</h1>
-
+    <p>Your liked lessons</p>
     <v-list two-line>
-      <template v-for="(fav) in favoriteLessons">
-        <v-list-item :key="fav.id" thumbnail :to="'/lesson/' + fav.lessonId">
+      <template v-for="favourite in likedUserLessons">
+        <v-list-item :key="favourite.id" thumbnail :to="'/lesson/' + favourite.lessonId.id">
           <v-list-item-avatar>
-
+            <v-img v-bind:src="favourite.lessonId.thumbnail"></v-img>
           </v-list-item-avatar>
 
           <v-list-item-content>
-            <v-list-item-title v-html="lesson.title"></v-list-item-title>
-            <v-list-item-sub-title v-html="lesson.level"></v-list-item-sub-title>
+            <v-list-item-title v-html="favourite.lessonId.title"></v-list-item-title>
+            <v-list-item-subtitle itle v-html="favourite.lessonId.difficulty.description"></v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
       </template>
@@ -20,13 +19,14 @@
 </template>
 
 <script>
+
 export default {
+  created() {
+    this.$store.dispatch('getLikedUserLessons');
+  },
   computed: {
-    favoriteLessons() {
-      return this.$store.state.favoriteLessons
-        .sort(function(a, b) {
-          return new Date(b.timeAdded) - new Date(a.timeAdded);
-        });
+    likedUserLessons() {
+      return this.$store.state.likedUserLessons;
     }
   }
 };
