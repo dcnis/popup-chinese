@@ -80,7 +80,7 @@ export default {
     audioFinish() {
     },
     getLesson() {
-      axios.get(constants.GET_LESSON + this.id)
+      axios.get(constants.url.GET_LESSON + this.id)
         .then(response => {
           // set current lesson
           this.currentLesson = response.data;
@@ -96,7 +96,7 @@ export default {
         email: this.$store.state.user.email,
         lessonId: this.id
       };
-      axios.post(constants.GET_SINGLE_USER_LESSON, body)
+      axios.post(constants.url.GET_SINGLE_USER_LESSON, body)
         .then(response => {
           // set userLesson
           this.userLesson = response.data;

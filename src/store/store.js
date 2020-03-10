@@ -59,10 +59,11 @@ const store = new Vuex.Store({
   },
   actions: {
     async getLatestLessonsOfUser(context) {
+      const accessToken = await Vue.prototype.$auth.getAccessToken();
       var requestBody = { email: this.state.user.email, limit: 5 };
-      axios.defaults.headers.common['Authorization'] = `Bearer ${await Vue.prototype.$auth.getAccessToken()}`;
+      axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
       var response = await axios.post(
-        constants.GET_USER_LESSONS,
+        constants.url.GET_USER_LESSONS,
         requestBody
       );
       context.commit('setLatestLessonsOfUser', response.data.content);
@@ -71,7 +72,7 @@ const store = new Vuex.Store({
       // make POST request to DB
       var newDate = new Date().toISOString();
 
-      var url = constants.ADD_LATEST_LESSON_OF_USER +
+      var url = constants.url.ADD_LATEST_LESSON_OF_USER +
         '?email=' + this.state.user.email +
         '&lessonId=' + lessonId +
         '&lastSeen=' + newDate;
@@ -92,7 +93,7 @@ const store = new Vuex.Store({
       };
 
       return new Promise((resolve, reject) => {
-        axios.post(constants.UPDATE_USER_LESSON, bodyWithTimestamp)
+        axios.post(constants.url.UPDATE_USER_LESSON, bodyWithTimestamp)
           .then(response => {
             // update state if there was a DB UPDATE row
             if (response === 1) {
@@ -125,7 +126,7 @@ const store = new Vuex.Store({
       const searchedLevel = {
         difficulty: level
       };
-      axios.post(constants.FIND_LESSONS_BY_DIFFICULTY, searchedLevel)
+      axios.post(constants.url.FIND_LESSONS_BY_DIFFICULTY, searchedLevel)
         .then(res => {
           context.commit('setLessonsByDiffculty', res.data);
         })
@@ -139,7 +140,7 @@ const store = new Vuex.Store({
         liked: true
       };
 
-      axios.post(constants.GET_USER_LESSONS, body)
+      axios.post(constants.url.GET_USER_LESSONS, body)
         .then(response => {
           context.commit('setLikedUserLessons', response.data.content);
         })

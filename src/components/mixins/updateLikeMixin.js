@@ -11,7 +11,7 @@ export default {
         liked: liked
       };
 
-      axios.post(constants.UPDATE_USER_LESSON, bodyWithLike)
+      axios.post(constants.url.UPDATE_USER_LESSON, bodyWithLike)
         .then()
         .catch(error => console.log(error));
     }

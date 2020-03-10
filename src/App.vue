@@ -70,8 +70,29 @@
 
     <v-app-bar color="#86E0C8" dark fixed app>
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-      <v-btn outlined right fixed v-if="isLoggedIn" v-on:click="logout" id="logout-button"> Logout </v-btn>
-      <v-btn outlined right fixed v-else v-on:click="login" id="login-button"> Login </v-btn>
+      <v-btn outlined right fixed v-if="!isLoggedIn" v-on:click="login" id="login-button"> Login </v-btn>
+      <v-spacer></v-spacer>
+          <v-menu v-if="isLoggedIn" fixed right>
+            <template v-slot:activator="{ on }">
+              <v-btn
+                dark
+                icon
+                v-on="on"
+              >
+                <v-icon>mdi-dots-vertical</v-icon>
+              </v-btn>
+            </template>
+
+            <v-list>
+              <v-list-item
+                v-for="(item, i) in items"
+                :key="i"
+                @click="logout"
+              >
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>
     </v-app-bar>
     <v-content>
       <v-container fluid>
@@ -92,7 +113,10 @@ export default {
   data() {
     return {
       drawer: null,
-      authenticated: false
+      authenticated: false,
+      items: [
+        { title: 'Logout' }
+      ]
     };
   },
   created() {
