@@ -1,3 +1,5 @@
+
+
 export default {
   url: {
     GET_USER_LESSONS: 'https://heroku-popup-chinese-backend.herokuapp.com/getUserLessons',
@@ -8,9 +10,9 @@ export default {
     GET_SINGLE_USER_LESSON: 'https://heroku-popup-chinese-backend.herokuapp.com/getSingleUserLesson/'
   },
   oidc: {
-    clientId: '0oa2ibx8wdHZ7tg2n4x6',
-    issuer: 'https://dev-137527.okta.com',
-    redirectUri: 'http://localhost:8080/implicit/callback',
+    clientId: process.env.VUE_APP_OKTA_CLIENT_ID,
+    issuer: process.env.VUE_APP_OKTA_ISSUER,
+    redirectUri: process.env.VUE_APP_OKTA_REDIRECT_URI,
     scopes: ['openid', 'profile', 'email'],
     pkce: true
   }
