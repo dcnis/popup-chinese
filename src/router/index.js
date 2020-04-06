@@ -22,21 +22,26 @@ const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
-    { path: '/',
-      component: Home },
+    {
+      path: '/',
+      component: Home
+    },
     { path: '/implicit/callback', component: Auth.handleCallback() },
-    { path: '/favorites',
+    {
+      path: '/favorites',
       component: Favorites,
       meta: {
         requiresAuth: true
-      } },
+      }
+    },
     { path: '/about', component: About },
     { path: '/lessons-absolute-beginners', component: AbsoluteBeginners },
     { path: '/lessons-elementary', component: Elementary },
     { path: '/lessons-intermediate', component: Intermediate },
     { path: '/lessons-advanced', component: Advanced },
     { path: '/login', name: 'login', component: Login },
-    { path: '/lesson/:id',
+    {
+      path: '/lesson/:id',
       component: LessonDetails,
       props: true,
       children: [
@@ -44,7 +49,8 @@ const router = new Router({
         { path: 'discussion', component: Discussion, props: true },
         { path: 'transcript', component: Transcript },
         { path: 'vocabulary', component: Vocabulary }
-      ] }
+      ]
+    }
   ]
 });
 

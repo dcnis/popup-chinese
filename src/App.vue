@@ -143,7 +143,7 @@ export default {
   },
   watch: {
     // Everytime the route changes, check for auth status
-    '$route': 'isAuthenticated'
+    $route: 'isAuthenticated'
   }
 };
 </script>
