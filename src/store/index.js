@@ -61,7 +61,7 @@ const store = new Vuex.Store({
     async getLatestLessonsOfUser(context) {
       const accessToken = await Vue.prototype.$auth.getAccessToken();
       var requestBody = { email: this.state.user.email, limit: 5 };
-      axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+      axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
       var response = await axios.post(
         constants.url.GET_USER_LESSONS,
         requestBody
@@ -122,7 +122,7 @@ const store = new Vuex.Store({
       store.dispatch('getLatestLessonsOfUser');
     },
     async fetchLessonsByDiffculty(context, level) {
-      axios.defaults.headers.common['Authorization'] = `Bearer ${await Vue.prototype.$auth.getAccessToken()}`;
+      axios.defaults.headers.common.Authorization = `Bearer ${await Vue.prototype.$auth.getAccessToken()}`;
       const searchedLevel = {
         difficulty: level
       };
