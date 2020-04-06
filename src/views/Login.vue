@@ -7,7 +7,7 @@
 <script>
 import OktaSignIn from '@okta/okta-signin-widget';
 import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
-import config from '../config/constants';
+import config from '../config/config';
 
 export default {
   name: 'Login',
@@ -19,13 +19,13 @@ export default {
          * needs to be configured with the base URL for your Okta Org. Here
          * we derive it from the given issuer for convenience.
          */
-        baseUrl: config.oidc.issuer,
+        baseUrl: config.oidc.issuer.split('/oauth2')[0],
         clientId: config.oidc.clientId,
         redirectUri: config.oidc.redirectUri,
         logo: require('@/assets/logo.png'),
         i18n: {
           en: {
-            'primaryauth.title': 'Sign in to Vue & Company'
+            'primaryauth.title': 'Sign in to Popup Chinese'
           }
         },
         authParams: {

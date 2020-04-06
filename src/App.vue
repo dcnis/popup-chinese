@@ -70,7 +70,7 @@
 
     <v-app-bar color="#86E0C8" dark fixed app>
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-      <v-btn outlined right fixed v-if="!isLoggedIn" v-on:click="login" id="login-button"> Login </v-btn>
+      <v-btn outlined right fixed v-if="!isLoggedIn" to="/login" id="login-button"> Login </v-btn>
       <v-spacer></v-spacer>
           <v-menu v-if="isLoggedIn" fixed right>
             <template v-slot:activator="{ on }">
@@ -123,9 +123,6 @@ export default {
     this.isAuthenticated();
   },
   methods: {
-    async login() {
-      await this.$auth.loginRedirect('/');
-    },
     async isAuthenticated() {
       this.$store.dispatch('fetchAuthentication', await this.$auth.isAuthenticated());
     },
