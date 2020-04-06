@@ -13,15 +13,10 @@ import Vocabulary from './components/Vocabulary.vue';
 import Favorites from './views/Favorites.vue';
 import Login from './views/Login.vue';
 import Auth from '@okta/okta-vue';
+import config from './config/config';
 
 Vue.use(Router);
-Vue.use(Auth, {
-  issuer: 'https://dev-137527.okta.com/oauth2/default',
-  clientId: '0oa2ibx8wdHZ7tg2n4x6',
-  redirectUri: 'https://heroku-popup-chinese-frontend.herokuapp.com/implicit/callback',
-  scopes: ['openid', 'profile', 'email'],
-  pkce: true
-});
+Vue.use(Auth, config.oidc);
 
 const router = new Router({
   mode: 'history',

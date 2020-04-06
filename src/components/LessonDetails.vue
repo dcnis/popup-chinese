@@ -14,7 +14,7 @@
     </v-container>
     <router-view :lesson="currentLesson"></router-view>
     <br><br>
-    <v-bottom-navigation fixed :value="e31" absolute grow color="teal">
+    <v-bottom-navigation fixed :value="e31" grow color="teal">
         <v-btn to="discussion">
           <span>Discussion</span>
           <v-icon>feedback</v-icon>
