@@ -12,8 +12,7 @@ export default {
       };
 
       axios.post(constants.url.UPDATE_USER_LESSON, bodyWithLike)
-        .then()
-        .catch(error => console.log(error));
+        .then();
     }
   }
 };

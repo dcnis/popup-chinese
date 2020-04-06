@@ -88,7 +88,6 @@ export default {
             this.getMatchingUserLesson();
           }
         })
-        .catch(err => console.log('Error: ' + err))
         .finally(() => (this.loading = false));
     },
     getMatchingUserLesson() {
@@ -100,10 +99,6 @@ export default {
         .then(response => {
           // set userLesson
           this.userLesson = response.data;
-        })
-        .catch(error => {
-          // if no matching userLesson found (something is wrong)
-          console.log(error);
         });
     }
   },

@@ -77,7 +77,7 @@ const store = new Vuex.Store({
         '&lessonId=' + lessonId +
         '&lastSeen=' + newDate;
 
-      axios.post(url).catch(error => console.log(error));
+      axios.post(url);
 
       // add lesson to state (I think I dont need it because it will get fetched anyways)
     },
@@ -102,7 +102,6 @@ const store = new Vuex.Store({
             resolve(response);
           })
           .catch(error => {
-            console.log(error);
             reject(error);
           });
       });
@@ -129,8 +128,7 @@ const store = new Vuex.Store({
       axios.post(constants.url.FIND_LESSONS_BY_DIFFICULTY, searchedLevel)
         .then(res => {
           context.commit('setLessonsByDiffculty', res.data);
-        })
-        .catch(err => console.log(err));
+        });
     },
     async getLikedUserLessons(context) {
       var user = await Vue.prototype.$auth.getUser();
@@ -143,8 +141,7 @@ const store = new Vuex.Store({
       axios.post(constants.url.GET_USER_LESSONS, body)
         .then(response => {
           context.commit('setLikedUserLessons', response.data.content);
-        })
-        .catch(err => console.log(err));
+        });
     }
   }
 });

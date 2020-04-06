@@ -11,8 +11,7 @@ export const latestLessonMixin = {
               // therefore add lesson to latestLessonsOfUser
               store.dispatch('addLatestLessonsOfUser', lessonId);
             }
-          })
-          .catch(error => console.log(error));
+          });
       }
     }
   }

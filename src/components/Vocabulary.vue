@@ -42,7 +42,6 @@ export default {
       .then((response) => {
         this.vocabulary = response.data;
       })
-      .catch((err) => console.error(err))
       .finally(() => (this.loading = false));
   }
 };
