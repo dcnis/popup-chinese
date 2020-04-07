@@ -4,7 +4,7 @@
     <div v-else>
     <h3>{{currentLesson.title}}</h3>
     <span class="level">{{currentLesson.difficulty.description}}</span><br><br>
-    <vuetify-audio :file="file" :ended="audioFinish"></vuetify-audio>
+    <vuetify-audio :file="currentLesson.audio" :ended="audioFinish"></vuetify-audio>
     <v-container>
     <v-layout justify-end>
         <v-btn text icon color="pink" v-on:click="toggleLike">
@@ -45,7 +45,7 @@ export default {
     return {
       e3: 0,
       e31: true,
-      file: 'http://popupchinese.com/data/1390/audio.mp3',
+      file: '',
       currentLesson: {},
       userLesson: {},
       loading: true
@@ -75,7 +75,7 @@ export default {
       updateLikeMixin.methods.updateUserLessonInDatabase(this.id, false);
     },
     async redirectLogin() {
-      await this.$auth.loginRedirect('/');
+      await this.$router.push({ path: '/login' });
     },
     audioFinish() {
     },

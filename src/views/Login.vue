@@ -33,6 +33,9 @@ export default {
           issuer: config.oidc.issuer,
           display: 'page',
           scopes: config.oidc.scopes
+        },
+        features: {
+          registration: false
         }
       });
       this.widget.renderEl(

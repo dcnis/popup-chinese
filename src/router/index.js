@@ -54,6 +54,13 @@ const router = new Router({
   ]
 });
 
-router.beforeEach(Vue.prototype.$auth.authRedirectGuard());
+router.beforeEach(async(to, from, next) => {
+  if (to.matched.some(route => route.meta.requiresAuth) && !(await Vue.prototype.$auth.isAuthenticated())) {
+    // Navigate to custom login page
+    next({ path: '/login' });
+  } else {
+    next();
+  }
+});
 
 export default router;
