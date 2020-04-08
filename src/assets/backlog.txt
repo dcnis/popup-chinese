@@ -2,8 +2,6 @@ This is the backlog of features. Here you will find potential features, that wil
 
 
 FEATURE-REQUEST:
-1. In view 'Transcript' make it possible to show/hide pinyin, english.
-2. Sort Favorites
 
 
 BUG:
@@ -14,3 +12,6 @@ BUG:
 DONE:
 - Get favorite userLessons
 - Make a custom login-page
+- In view 'Transcript' make it possible to show/hide pinyin, english.
+- Sort Favorites
+- save pinyin/translation checkbox in session

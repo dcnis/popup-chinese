@@ -9,12 +9,12 @@
               <th class="text-left">Speaker</th>
               <th class="text-left">
                 <span class="nobreak padding-right">
-                  <input type="checkbox" id="checkboxPinyin" v-model="pinyin">
-                  <label for="checkboxPinyin"> Pinyin</label>
+                  <input type="checkbox" id="checkboxPinyin" v-model="hidePinyin">
+                  <label for="checkboxPinyin"> hide pinyin</label>
                 </span>
                 <span class="nobreak">
-                  <input type="checkbox" id="checkboxTranslation" v-model="translation">
-                  <label for="checkboxTranslation"> Translation</label>
+                  <input type="checkbox" id="checkboxTranslation" v-model="hideTranslation">
+                  <label for="checkboxTranslation"> hide translation</label>
                 </span>
             </th>
             </tr>
@@ -24,10 +24,10 @@
             <tr v-for="item in dialogs" :key="item.dialogId">
               <td>{{item.speaker}}</td>
               <td>{{item.chinese}}<br>
-                  <span v-if="pinyin">
+                  <span v-if="!hidePinyin">
                     {{item.pinyin}}<br>
                   </span>
-                  <span v-if="translation">
+                  <span v-if="!hideTranslation">
                     {{item.english}}<br>
                   </span>
               </td>
@@ -58,9 +58,27 @@ export default {
         { value: 'pinyin' },
         { value: 'english' }
       ],
-      pinyin: true,
-      translation: true
+      hidePinyin: false,
+      hideTranslation: false
     };
+  },
+  mounted() {
+    if (localStorage.hidePinyin === 'true') {
+      this.hidePinyin = localStorage.hidePinyin;
+    }
+    if (localStorage.hideTranslation === 'true') {
+      this.hideTranslation = localStorage.hideTranslation;
+    }
+  },
+  watch: {
+    hidePinyin(value) {
+      localStorage.hidePinyin = value;
+      this.hidePinyin = value;
+    },
+    hideTranslation(value) {
+      localStorage.hideTranslation = value;
+      this.hideTranslation = value;
+    }
   },
   created() {
     axios.get('https://heroku-popup-chinese-backend.herokuapp.com/getDialogsByLessonId/' +
