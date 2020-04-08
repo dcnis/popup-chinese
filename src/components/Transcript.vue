@@ -118,6 +118,11 @@ th, td {
   padding: 10px 20px;
 }
 
+table tr:hover td {
+   background-color: white;
+   opacity: 1.0;
+}
+
 .chinese {
     font-size: 30px;
 }
