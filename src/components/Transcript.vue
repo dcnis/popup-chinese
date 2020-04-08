@@ -22,9 +22,9 @@
           <tbody>
 
             <tr v-for="item in dialogs" :key="item.dialogId">
-              <td><span class="chineseFont">{{item.speaker}}</span></td>
+              <td><span class="chineseFont speaker">{{item.speaker}}</span></td>
               <td>
-                <span class="chineseFont">
+                <span class="chineseFont dialogSize">
                   {{item.chinese}}<br>
                 </span>
                 <span v-if="!hidePinyin">
@@ -130,7 +130,7 @@ table tr:hover td {
     color: #757575;
 }
 .speaker{
-    size: 20%
+    font-size: 1.2em;
 }
 
 .padding-right{
@@ -142,8 +142,11 @@ table tr:hover td {
 }
 
 .chineseFont{
-    font-size: 1.8em;
     font-family: Tahoma, Arial, Helvetica, "Microsoft YaHei New", "Microsoft Yahei", "微软雅黑", 宋体, SimSun, STXihei, "华文细黑", sans-serif;
+}
+
+.dialogSize{
+    font-size: 1.8em;
 }
 
 </style>
