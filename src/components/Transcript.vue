@@ -7,15 +7,29 @@
           <thead>
             <tr>
               <th class="text-left">Speaker</th>
-              <th class="text-left">Dialog</th>
+              <th class="text-left">
+                <span class="nobreak padding-right">
+                  <input type="checkbox" id="checkboxPinyin" v-model="pinyin">
+                  <label for="checkboxPinyin"> Pinyin</label>
+                </span>
+                <span class="nobreak">
+                  <input type="checkbox" id="checkboxTranslation" v-model="translation">
+                  <label for="checkboxTranslation"> Translation</label>
+                </span>
+            </th>
             </tr>
           </thead>
           <tbody>
+
             <tr v-for="item in dialogs" :key="item.dialogId">
               <td>{{item.speaker}}</td>
               <td>{{item.chinese}}<br>
-                  {{item.pinyin}}<br>
-                  {{item.english}}<br>
+                  <span v-if="pinyin">
+                    {{item.pinyin}}<br>
+                  </span>
+                  <span v-if="translation">
+                    {{item.english}}<br>
+                  </span>
               </td>
             </tr>
           </tbody>
@@ -43,7 +57,9 @@ export default {
         { text: 'Dialog', value: 'chinese' },
         { value: 'pinyin' },
         { value: 'english' }
-      ]
+      ],
+      pinyin: true,
+      translation: true
     };
   },
   created() {
@@ -90,4 +106,13 @@ th, td {
 .speaker{
     size: 20%
 }
+
+.padding-right{
+    padding-right: 30px;
+}
+
+.nobreak{
+    white-space:  nowrap;
+}
+
 </style>
