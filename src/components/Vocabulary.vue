@@ -66,9 +66,6 @@ td {
   line-height: 30px;
 }
 
-.chinese {
-    font-size: 30px;
-}
 .english {
     color: #757575;
     font-size: 18px;
@@ -76,4 +73,10 @@ td {
 .speaker{
     size: 20%
 }
+
+.chinese{
+    font-size: 2em;
+    font-family: Tahoma, Arial, Helvetica, "Microsoft YaHei New", "Microsoft Yahei", "微软雅黑", 宋体, SimSun, STXihei, "华文细黑", sans-serif;
+}
+
 </style>

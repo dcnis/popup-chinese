@@ -22,14 +22,17 @@
           <tbody>
 
             <tr v-for="item in dialogs" :key="item.dialogId">
-              <td>{{item.speaker}}</td>
-              <td>{{item.chinese}}<br>
-                  <span v-if="!hidePinyin">
-                    {{item.pinyin}}<br>
-                  </span>
-                  <span v-if="!hideTranslation">
-                    {{item.english}}<br>
-                  </span>
+              <td><span class="chineseFont">{{item.speaker}}</span></td>
+              <td>
+                <span class="chineseFont">
+                  {{item.chinese}}<br>
+                </span>
+                <span v-if="!hidePinyin">
+                  {{item.pinyin}}<br>
+                </span>
+                <span v-if="!hideTranslation">
+                  {{item.english}}<br>
+                </span>
               </td>
             </tr>
           </tbody>
@@ -131,6 +134,11 @@ th, td {
 
 .nobreak{
     white-space:  nowrap;
+}
+
+.chineseFont{
+    font-size: 1.8em;
+    font-family: Tahoma, Arial, Helvetica, "Microsoft YaHei New", "Microsoft Yahei", "微软雅黑", 宋体, SimSun, STXihei, "华文细黑", sans-serif;
 }
 
 </style>
