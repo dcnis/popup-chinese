@@ -150,4 +150,5 @@ export default {
     color: #43E0B6 !important;
     caret-color: #43E0B6 !important;
 }
+
 </style>

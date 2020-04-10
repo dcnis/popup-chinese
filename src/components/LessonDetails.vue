@@ -1,10 +1,15 @@
 <template>
-  <div>
+  <div class="removePadding">
     <div v-if="loading">Lesson loading..</div>
     <div v-else>
-    <h3>{{currentLesson.title}}</h3>
-    <span class="level">{{currentLesson.difficulty.description}}</span><br><br>
-    <vuetify-audio :file="currentLesson.audio" :ended="audioFinish"></vuetify-audio>
+      <div class="removePadding">
+      <podcast-player
+        :file="currentLesson.audio"
+        :title="currentLesson.title"
+        :level="currentLesson.difficulty.description"
+        :thumbnail="currentLesson.thumbnail">
+      </podcast-player>
+      </div>
     <v-container>
     <v-layout justify-end>
         <v-btn text icon color="pink" v-on:click="toggleLike">
@@ -33,10 +38,10 @@
 </template>
 
 <script>
-import VuetifyAudio from 'vuetify-audio';
 import axios from 'axios';
 import constants from '../config/constants';
 import updateLikeMixin from './mixins/updateLikeMixin';
+import PodcastPlayer from './PodcastPlayer';
 
 export default {
   mixins: [updateLikeMixin],
@@ -52,7 +57,7 @@ export default {
     };
   },
   components: {
-    VuetifyAudio
+    PodcastPlayer
   },
   methods: {
     toggleLike() {
@@ -107,9 +112,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.level {
-  color: #75BAA7;
-}
-</style>
