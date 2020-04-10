@@ -122,7 +122,7 @@ export default {
       this.audio.currentTime = val / timeOffset;
     },
     pauseTrackTime() {
-      console.log('pause audio');
+      // console.log('pause audio');
     },
     skipSeconds(seconds) {
       this.audio.currentTime = (this.audio.currentTime * timeOffset + (seconds * timeOffset)) / timeOffset;
