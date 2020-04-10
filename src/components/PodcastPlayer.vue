@@ -28,8 +28,6 @@
           track-color="white"
           v-model="sliderValue"
           @click="setTrackTime(sliderValue)"
-          @mousedown="pauseTrackTime"
-          @mouseup="setTrackTime(sliderValue)"
           :max="trackDuration">
           </v-slider>
         </div>
@@ -61,7 +59,7 @@ export default {
     }
   },
   computed: {
-    duration: function() {
+    duration() {
       return this.audio ? formatTime(this.totalDuration) : '';
     },
     pWidth() {
@@ -100,9 +98,6 @@ export default {
     },
     setTrackTime(val) {
       this.audio.currentTime = val / timeOffset;
-    },
-    pauseTrackTime() {
-      // console.log('pause audio');
     },
     skipSeconds(seconds) {
       this.audio.currentTime = (this.audio.currentTime * timeOffset + (seconds * timeOffset)) / timeOffset;
@@ -193,11 +188,16 @@ export default {
     loadData() {
       this.trackDuration = this.audio.duration * timeOffset;
       this.loading = false;
-      console.log('currentTime' + this.audio.currentTime);
-      console.log('duration' + this.audio.duration);
     },
     updateSlider() {
       this.sliderValue = this.audio.currentTime * timeOffset;
+      if (this.audio.ended) {
+        this.audio.currentTime = 0;
+        this.sliderValue = 0;
+        this.audio.pause();
+        this.paused = true;
+        this.playing = false;
+      }
     },
     myInit() {
       this.audio.addEventListener('loadeddata', this.loadData);
