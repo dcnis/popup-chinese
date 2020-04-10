@@ -118,7 +118,7 @@ export default {
     }
   },
   mounted() {
-    this.audio = new Audio('http://popupchinese.com/data/26/audio.mp3');
+    this.audio = new Audio(this.file);
     this.init();
   },
   filters: {
