@@ -8,9 +8,6 @@
           <h3>{{this.title}}</h3>
           <span class="level">{{this.level}}</span>
         </div>
-        <!-- <div class="albumCover">
-          <img :src="this.thumbnail">
-        </div> -->
         <div class="buttons">
             <v-icon x-large class="button" @click.native="startFromBeginning">skip_previous</v-icon>
             <v-icon x-large class="button" @click.native="skipSeconds(-10)">replay_10</v-icon>
@@ -22,31 +19,11 @@
             </a>
             <v-icon x-large class="button" @click.native="skipSeconds(10)">forward_10</v-icon>
             <v-icon x-large class="button">skip_next</v-icon>
-            <!-- <v-btn outlined icon class="ma-2" color="teal" @click.native="playing ? pause() : play()" :disabled="!loaded">
-                <v-icon v-if="!playing || paused">play_arrow</v-icon>
-                <v-icon v-else>pause</v-icon>
-            </v-btn>
-            <v-btn outlined icon class="ma-2" color="teal" @click.native="stop()" :disabled="!loaded">
-                <v-icon>stop</v-icon>
-            </v-btn>
-            <v-btn outlined icon class="ma-2" color="teal" @click.native="mute()" :disabled="!loaded">
-                <v-icon v-if="!isMuted">volume_up</v-icon>
-                <v-icon v-else>volume_off</v-icon>
-            </v-btn>
-            <v-btn outlined icon class="ma-2" color="teal" @click.native="loaded ? download() : reload()">
-                <v-icon v-if="!loaded">refresh</v-icon>
-                <v-icon v-else>get_app</v-icon>
-            </v-btn> -->
-            <!-- <v-slider v-model="percentage" height="5" style="margin-top: 15px; margin-bottom: 15px; height=8px" @click.native="setPosition()" color="teal" :disabled="!loaded"></v-slider> -->
-            <!-- <v-slider track-color="grey"></v-slider> -->
-            <!-- <div class="slider" ref="slider"></div>
-                <div class="progressInfo"></div>
-                <div class="process" :style="{width: pWidth}"></div>
-                <div class="thunk" ref="trunk" :style="{left}">
-                <div class="block"></div>
-            </div> -->
         </div>
-        {{sliderValue}}
+        <div class="currentTimeContainer">
+          <span class="currentTime">{{audio.currentTime | formatTime}}</span>
+          <span class="totalTime">{{audio.duration | formatTime}}</span>
+        </div>
         <v-slider
           track-color="white"
           v-model="sliderValue"
@@ -216,6 +193,8 @@ export default {
     loadData() {
       this.trackDuration = this.audio.duration * timeOffset;
       this.loading = false;
+      console.log('currentTime' + this.audio.currentTime);
+      console.log('duration' + this.audio.duration);
     },
     updateSlider() {
       this.sliderValue = this.audio.currentTime * timeOffset;
@@ -228,6 +207,11 @@ export default {
   mounted() {
     this.audio = new Audio('http://popupchinese.com/data/26/audio.mp3');
     this.myInit();
+  },
+  filters: {
+    formatTime(s) {
+      return (s - (s %= 60)) / 60 + (s > 9 ? ':' : ':0') + parseInt(s);
+    }
   },
   beforeDestroy() {
     this.audio.removeEventListener('timeupdate', this._handlePlayingUI);
@@ -311,7 +295,7 @@ text-align: center;
 .button {
     color: rgba(0, 0, 0, 0.75);
     border-radius: 50%;
-
+    margin-top: 10px;
     outline: 0;
     text-decoration: none;
     cursor: pointer;
@@ -352,6 +336,24 @@ cursor: initial;
   object-position: 50% 50%;
   object-fit: cover;
   z-index: 10;
+}
+
+.currentTimeContainer{
+  width: 100%;
+  height: 1rem;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.currentTimeContainer .totalTime{
+  font-size: 1rem;
+  font-family: monospace;
+}
+
+.currentTimeContainer .currentTime{
+  font-size: 1rem;
+  font-family: monospace;
 }
 
 </style>
