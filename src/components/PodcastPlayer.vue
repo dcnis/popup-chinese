@@ -8,11 +8,11 @@
           <h3>{{this.title}}</h3>
           <span class="level">{{this.level}}</span>
         </div>
-        <div class="albumCover">
+        <!-- <div class="albumCover">
           <img :src="this.thumbnail">
-        </div>
+        </div> -->
         <div class="buttons">
-            <v-icon x-large class="button">skip_previous</v-icon>
+            <v-icon x-large class="button" @click.native="startFromBeginning">skip_previous</v-icon>
             <v-icon x-large class="button" @click.native="skipSeconds(-10)">replay_10</v-icon>
             <a class="button play" v-on:click="playAudio()" title="Play/Pause Song">
                 <transition name="slide-fade" mode="out-in">
@@ -118,6 +118,9 @@ export default {
   },
 
   methods: {
+    startFromBeginning() {
+      this.audio.currentTime = 0;
+    },
     setTrackTime(val) {
       this.audio.currentTime = val / timeOffset;
     },
