@@ -127,11 +127,9 @@ export default {
     }
   },
   beforeDestroy() {
-    this.audio.removeEventListener('timeupdate', this._handlePlayingUI);
-    this.audio.removeEventListener('loadeddata', this._handleLoaded);
-    this.audio.removeEventListener('pause', this._handlePlayPause);
-    this.audio.removeEventListener('play', this._handlePlayPause);
-    this.audio.removeEventListener('ended', this._handleEnded);
+    this.audio.pause();
+    this.audio.removeEventListener('timeupdate', this.loadData);
+    this.audio.removeEventListener('loadeddata', this.updateSlider);
   }
 };
 
