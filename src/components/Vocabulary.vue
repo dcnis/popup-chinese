@@ -13,7 +13,7 @@
           </thead>
           <tbody>
             <tr v-for="item in vocabulary" :key="item.vocabularyId">
-              <td><span class="chineseFont">{{item.chinese}}</span></td>
+              <td><span class="chineseFont nobreak">{{item.chinese}}</span></td>
               <td><span>{{item.pinyin}}</span></td>
               <td><span>{{item.english}}</span></td>
             </tr>
@@ -81,6 +81,10 @@ td {
 table tr:hover td {
    background-color: white;
    opacity: 1.0;
+}
+
+.nobreak{
+    white-space:  nowrap;
 }
 
 </style>
