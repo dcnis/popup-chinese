@@ -20,7 +20,6 @@
             </tr>
           </thead>
           <tbody>
-
             <tr v-for="item in dialogs" :key="item.dialogId">
               <td><span class="chineseFont speaker">{{item.speaker}}</span></td>
               <td>
@@ -50,17 +49,6 @@ export default {
     return {
       loading: true,
       dialogs: [],
-      headers: [
-        {
-          text: 'Speaker',
-          align: 'left',
-          sortable: false,
-          value: 'speaker'
-        },
-        { text: 'Dialog', value: 'chinese' },
-        { value: 'pinyin' },
-        { value: 'english' }
-      ],
       hidePinyin: false,
       hideTranslation: false
     };

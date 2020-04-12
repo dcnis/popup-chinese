@@ -2,7 +2,7 @@ This is the backlog of features. Here you will find potential features, that wil
 
 
 FEATURE-REQUEST:
-
+- click on vocabulary to save to wordlist
 
 BUG:
 - What happens if lesson is not in userLessons

@@ -2,15 +2,24 @@
     <div>
         <div v-if="loading">Loading..</div>
         <div v-else>
-          <v-data-table
-                :headers="headers"
-                :items="vocabulary"
-                :items-per-page="100"
-                :mobile-breakpoint="NaN"
-                :disable-pagination="true"
-                :hide-default-footer="true"
-                class="elevation-2 myStyle"
-          ></v-data-table>
+          <v-simple-table :light="false">
+        <template v-slot:default>
+          <thead>
+            <tr>
+              <th class="text-left">Chinese</th>
+              <th class="text-left">Pinyin</th>
+              <th class="text-left">English</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="item in vocabulary" :key="item.vocabularyId">
+              <td><span class="chineseFont">{{item.chinese}}</span></td>
+              <td><span>{{item.pinyin}}</span></td>
+              <td><span>{{item.english}}</span></td>
+            </tr>
+          </tbody>
+        </template>
+        </v-simple-table>
         </div>
     </div>
 </template>
@@ -23,17 +32,7 @@ export default {
     return {
       currentLesson: null,
       loading: true,
-      vocabulary: [],
-      headers: [
-        {
-          text: 'Chinese',
-          align: 'left',
-          sortable: false,
-          value: 'chinese'
-        },
-        { text: 'Pinyin', sortable: false, value: 'pinyin' },
-        { text: 'English', sortable: false, value: 'english' }
-      ]
+      vocabulary: []
     };
   },
   created() {
@@ -74,9 +73,14 @@ td {
     size: 20%
 }
 
-.chinese{
-    font-size: 2em;
+.chineseFont{
     font-family: Tahoma, Arial, Helvetica, "Microsoft YaHei New", "Microsoft Yahei", "微软雅黑", 宋体, SimSun, STXihei, "华文细黑", sans-serif;
+    font-size: 1.8em;
+}
+
+table tr:hover td {
+   background-color: white;
+   opacity: 1.0;
 }
 
 </style>
