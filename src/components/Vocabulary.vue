@@ -7,15 +7,25 @@
           <thead>
             <tr>
               <th class="text-left">Chinese</th>
-              <th class="text-left">Pinyin</th>
-              <th class="text-left">English</th>
+              <th>
+                <span class="nobreak">
+                  <input type="checkbox" id="checkboxPinyin" v-model="hideVocabularyPinyin">
+                  <label for="checkboxPinyin"> hide pinyin</label>
+                </span>
+              </th>
+              <th class="text-left">
+                <span class="nobreak">
+                  <input type="checkbox" id="checkboxTranslation" v-model="hideVocabularyTranslation">
+                  <label for="checkboxTranslation"> hide translation</label>
+                </span>
+              </th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="item in vocabulary" :key="item.vocabularyId">
               <td><span class="chineseFont nobreak">{{item.chinese}}</span></td>
-              <td><span>{{item.pinyin}}</span></td>
-              <td><span>{{item.english}}</span></td>
+              <td><span v-if="!hideVocabularyPinyin">{{item.pinyin}}</span></td>
+              <td><span v-if="!hideVocabularyTranslation">{{item.english}}</span></td>
             </tr>
           </tbody>
         </template>
@@ -32,8 +42,20 @@ export default {
     return {
       currentLesson: null,
       loading: true,
-      vocabulary: []
+      vocabulary: [],
+      hideVocabularyPinyin: false,
+      hideVocabularyTranslation: false
     };
+  },
+  watch: {
+    hideVocabularyPinyin(value) {
+      localStorage.hideVocabularyPinyin = value;
+      this.hideVocabularyPinyin = value;
+    },
+    hideVocabularyTranslation(value) {
+      localStorage.hideVocabularyTranslation = value;
+      this.hideVocabularyTranslation = value;
+    }
   },
   created() {
     axios.get('https://heroku-popup-chinese-backend.herokuapp.com/getVocabularyByLessonId/' +
@@ -42,6 +64,14 @@ export default {
         this.vocabulary = response.data;
       })
       .finally(() => (this.loading = false));
+  },
+  mounted() {
+    if (localStorage.hideVocabularyPinyin === 'true') {
+      this.hideVocabularyPinyin = localStorage.hideVocabularyPinyin;
+    }
+    if (localStorage.hideVocabularyTranslation === 'true') {
+      this.hideVocabularyTranslation = localStorage.hideVocabularyTranslation;
+    }
   }
 };
 </script>
