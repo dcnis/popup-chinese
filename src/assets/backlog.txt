@@ -3,6 +3,7 @@ This is the backlog of features. Here you will find potential features, that wil
 
 FEATURE-REQUEST:
 - click on vocabulary to save to wordlist
+- Search lesson
 
 BUG:
 - What happens if lesson is not in userLessons
@@ -15,3 +16,4 @@ DONE:
 - In view 'Transcript' make it possible to show/hide pinyin, english.
 - Sort Favorites
 - save pinyin/translation checkbox in session
+- hide pinyin and translation at vocabulary

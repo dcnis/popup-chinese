@@ -70,6 +70,9 @@
 
     <v-app-bar color="#86E0C8" dark fixed app>
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+      <div class="search-wrapper">
+        <input type="text" v-model="searchTerm" placeholder="Search lesson.." id="searchInput">
+      </div>
       <v-btn outlined right fixed v-if="!isLoggedIn" to="/login" id="login-button"> Login </v-btn>
       <v-spacer></v-spacer>
           <v-menu v-if="isLoggedIn" fixed right>
@@ -96,13 +99,35 @@
     </v-app-bar>
     <v-content>
       <v-container fluid>
-        <router-view></router-view>
+        <router-view v-if="searchTerm.length == 0"></router-view>
+        <div v-else>
+          <!-- refactor and put into separate component -->
+          <v-list two-line>
+                <template v-for="lesson in searchResult">
+                  <v-list-item :key="lesson.id" :to="'/lesson/' + lesson.id" @click="performClick(lesson.id)">
+                    <v-list-item-avatar>
+                      <img :src="lesson.thumbnail">
+                    </v-list-item-avatar>
+                    <v-list-item-content>
+                      <v-list-item-title v-html="lesson.title"></v-list-item-title>
+                      <v-list-item-subtitle v-html="lesson.difficulty.description"></v-list-item-subtitle>
+                    </v-list-item-content>
+                  </v-list-item>
+                </template>
+              </v-list>
+              <!-- refactor and put into separate component -->
+        </div>
       </v-container>
     </v-content>
   </v-app>
 </template>
 
 <script>
+import axios from 'axios';
+import constants from './config/constants';
+import { latestLessonMixin } from './components/mixins/latestLessonMixin';
+
+const searchTimeout = 500;
 
 export default {
   name: 'App',
@@ -110,13 +135,19 @@ export default {
     source: String,
     lessons: []
   },
+  mixins: [
+    latestLessonMixin
+  ],
   data() {
     return {
       drawer: null,
       authenticated: false,
       items: [
         { title: 'Logout' }
-      ]
+      ],
+      searchTerm: '',
+      timeout: null,
+      searchResult: null
     };
   },
   created() {
@@ -131,6 +162,30 @@ export default {
       await this.isAuthenticated();
       this.$router.push({ path: './' });
       this.$store.dispatch('deleteUserData');
+    },
+    initSearchBar() {
+      const input = document.getElementById('searchInput');
+      let timeout = null;
+      input.addEventListener('keyup', () => {
+        clearTimeout(timeout);
+        if (this.searchTerm.length > 2) {
+          timeout = setTimeout(() => {
+            var body = {
+              searchTerm: this.searchTerm
+            };
+
+            axios.post(constants.url.SEARCH_LESSON, body)
+              .then(response => {
+                this.searchResult = response.data;
+              });
+          }, searchTimeout);
+        }
+      });
+    },
+    performClick(lessonId) {
+      this.searchTerm = '';
+      this.searchResult = null;
+      latestLessonMixin.methods.updateAll(lessonId);
     }
   },
   computed: {
@@ -141,6 +196,9 @@ export default {
   watch: {
     // Everytime the route changes, check for auth status
     $route: 'isAuthenticated'
+  },
+  mounted() {
+    this.initSearchBar();
   }
 };
 </script>
@@ -149,6 +207,23 @@ export default {
 .primary--text {
     color: #43E0B6 !important;
     caret-color: #43E0B6 !important;
+}
+
+.search-wrapper {
+  color: white;
+}
+
+.search-wrapper input {
+   padding: 4px;
+}
+
+.search-wrapper input:focus {
+  outline: none;
+  transform: scale(1.05);
+}
+
+::placeholder {
+  color: white;
 }
 
 </style>

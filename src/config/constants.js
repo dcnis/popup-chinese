@@ -5,6 +5,7 @@ export default {
     UPDATE_USER_LESSON: 'https://heroku-popup-chinese-backend.herokuapp.com/updateUserLesson',
     FIND_LESSONS_BY_DIFFICULTY: 'https://heroku-popup-chinese-backend.herokuapp.com/findLessonsByDifficulty',
     GET_LESSON: 'https://heroku-popup-chinese-backend.herokuapp.com/getLesson/',
-    GET_SINGLE_USER_LESSON: 'https://heroku-popup-chinese-backend.herokuapp.com/getSingleUserLesson/'
+    GET_SINGLE_USER_LESSON: 'https://heroku-popup-chinese-backend.herokuapp.com/getSingleUserLesson/',
+    SEARCH_LESSON: 'https://heroku-popup-chinese-backend.herokuapp.com/searchLesson'
   }
 };
