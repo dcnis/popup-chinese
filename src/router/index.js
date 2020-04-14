@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '../views/Home.vue';
-import About from '../views/About.vue';
+import Wordlist from '../views/Wordlist.vue';
 import AbsoluteBeginners from '../views/AbsoluteBeginners';
 import Elementary from '../views/Elementary.vue';
 import Intermediate from '../views/Intermediate';
@@ -34,7 +34,7 @@ const router = new Router({
         requiresAuth: true
       }
     },
-    { path: '/about', component: About },
+    { path: '/wordlist', component: Wordlist },
     { path: '/lessons-absolute-beginners', component: AbsoluteBeginners },
     { path: '/lessons-elementary', component: Elementary },
     { path: '/lessons-intermediate', component: Intermediate },

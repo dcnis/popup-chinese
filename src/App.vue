@@ -57,12 +57,12 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item to="/about">
+        <v-list-item to="/wordlist">
           <v-list-item-action>
-            <v-icon>info</v-icon>
+            <v-icon>g_translate</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>About</v-list-item-title>
+            <v-list-item-title>Wordlist</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -101,7 +101,6 @@
       <v-container fluid>
         <router-view v-if="searchTerm.length == 0"></router-view>
         <div v-else>
-          <!-- refactor and put into separate component -->
           <v-list two-line>
                 <template v-for="lesson in searchResult">
                   <v-list-item :key="lesson.id" :to="'/lesson/' + lesson.id" @click="performClick(lesson.id)">
@@ -115,7 +114,6 @@
                   </v-list-item>
                 </template>
               </v-list>
-              <!-- refactor and put into separate component -->
         </div>
       </v-container>
     </v-content>
