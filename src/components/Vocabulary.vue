@@ -6,7 +6,12 @@
         <template v-slot:default>
           <thead>
             <tr>
-              <th class="text-left">Chinese</th>
+              <th class="text-left">
+                <span class="nobreak">
+                  <input type="checkbox" id="checkboxPinyin" v-model="hideVocabularyChinese">
+                  <label for="checkboxPinyin"> hide chinese</label>
+                </span>
+              </th>
               <th>
                 <span class="nobreak">
                   <input type="checkbox" id="checkboxPinyin" v-model="hideVocabularyPinyin">
@@ -23,7 +28,7 @@
           </thead>
           <tbody>
             <tr v-for="item in vocabulary" :key="item.vocabularyId">
-              <td><span class="chineseFont nobreak">{{item.chinese}}</span></td>
+              <td><span v-if="!hideVocabularyChinese" class="chineseFont nobreak">{{item.chinese}}</span></td>
               <td><span v-if="!hideVocabularyPinyin">{{item.pinyin}}</span></td>
               <td><span v-if="!hideVocabularyTranslation">{{item.english}}</span></td>
             </tr>
@@ -44,7 +49,8 @@ export default {
       loading: true,
       vocabulary: [],
       hideVocabularyPinyin: false,
-      hideVocabularyTranslation: false
+      hideVocabularyTranslation: false,
+      hideVocabularyChinese: false
     };
   },
   watch: {
@@ -55,6 +61,10 @@ export default {
     hideVocabularyTranslation(value) {
       localStorage.hideVocabularyTranslation = value;
       this.hideVocabularyTranslation = value;
+    },
+    hideVocabularyChinese(value) {
+      localStorage.hideVocabularyChinese = value;
+      this.hideVocabularyChinese = value;
     }
   },
   created() {
@@ -71,6 +81,9 @@ export default {
     }
     if (localStorage.hideVocabularyTranslation === 'true') {
       this.hideVocabularyTranslation = localStorage.hideVocabularyTranslation;
+    }
+    if (localStorage.hideVocabularyChinese === 'true') {
+      this.hideVocabularyChinese = localStorage.hideVocabularyChinese;
     }
   }
 };
