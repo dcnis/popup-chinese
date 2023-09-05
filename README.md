@@ -11,16 +11,19 @@ Unfortunately their website isn't responsive, so I have build this mobile applic
 
 To run the application on your machine:
 
-1. Make sure you have latest [Node.js](https://nodejs.org/en/) installed.
+1. Make sure you have the latest [Node.js](https://nodejs.org/en/) installed.
 
-2. Download repository and run
+2. Clone repository 
+```
+git clone git@github.com:dcnis/popup-chinese.git
+```
 
-    ```bash
-    npm install
-    ```
+3. Install dependencies
+```bash
+npm install
+```
 
 3. Run application.
-
-    ```bash
-    npm run serve
-    ```
+```bash
+npm run serve
+```
